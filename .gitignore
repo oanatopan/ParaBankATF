@@ -1,0 +1,21 @@
+# Maven - ignoră folderul unde se compilează codul
+target/
+
+# IntelliJ IDEA - ignoră setările locale ale IDE-ului
+.idea/
+*.iml
+out/
+gen/
+
+# Log-uri de eroare (cum era cel din screenshot-ul tău)
+*.log
+hs_err_pid*
+
+# Sistem de operare
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
