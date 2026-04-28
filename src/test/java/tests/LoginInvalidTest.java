@@ -1,7 +1,7 @@
 package tests;
 
+import helpMethods.ElementsMethods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +15,7 @@ import java.time.Duration;
 public class LoginInvalidTest {
 
     public WebDriver driver;
+    ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest() {
@@ -28,24 +29,23 @@ public class LoginInvalidTest {
         driver.navigate().refresh();
         System.out.println("STEP 3: Login page is opened.");
 
+        elementsMethods = new ElementsMethods(driver);
+
         WebElement loginUsernameElement = driver.findElement(By.name("username"));
-        String loginUsernameValue = "utilizator_inexistent";
-        loginUsernameElement.sendKeys(loginUsernameValue);
+        elementsMethods.fillElement(loginUsernameElement, "utilizator_inexistent");
         System.out.println("STEP 4: Username field is filled.");
 
         WebElement loginPasswordElement = driver.findElement(By.name("password"));
-        String loginPasswordValue = "parola123";
-        loginPasswordElement.sendKeys(loginPasswordValue);
+        elementsMethods.fillElement(loginPasswordElement, "parola123");
         System.out.println("STEP 5: Password field is filled.");
 
         WebElement loginButtonElement = driver.findElement(By.xpath("//input[@value='Log In']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", loginButtonElement);
+        elementsMethods.clickJS(loginButtonElement);
         System.out.println("STEP 6: Log In button is clicked.");
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement errorTitleElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@class='title']")));
-        String actualErrorTitle = errorTitleElement.getText();
+        String actualErrorTitle = elementsMethods.getElementText(errorTitleElement);
         System.out.println("STEP 7: Error title is captured.");
 
         Assert.assertFalse(actualErrorTitle.isEmpty(), "Error page was not displayed.");

@@ -1,5 +1,6 @@
 package tests;
 
+import helpMethods.ElementsMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ import java.time.Duration;
 public class AccountHistoryTest {
 
     public WebDriver driver;
+    ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest() {
@@ -23,84 +25,76 @@ public class AccountHistoryTest {
         driver.manage().window().maximize();
         System.out.println("STEP 2: The browser is maximized.");
         driver.manage().deleteAllCookies();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
         System.out.println("STEP 3: The Register page is opened.");
 
+        elementsMethods = new ElementsMethods(driver);
+
         WebElement firstNameElement = driver.findElement(By.id("customer.firstName"));
-        String firstNameValue = "Oana";
-        firstNameElement.sendKeys(firstNameValue);
+        elementsMethods.fillElement(firstNameElement, "Oana");
         System.out.println("STEP 4: First Name field is filled.");
 
         WebElement lastNameElement = driver.findElement(By.id("customer.lastName"));
-        String lastNameValue = "Topan";
-        lastNameElement.sendKeys(lastNameValue);
+        elementsMethods.fillElement(lastNameElement, "Topan");
         System.out.println("STEP 5: Last Name field is filled.");
 
         WebElement streetElement = driver.findElement(By.id("customer.address.street"));
-        String streetValue = "Republicii";
-        streetElement.sendKeys(streetValue);
+        elementsMethods.fillElement(streetElement, "Republicii");
         System.out.println("STEP 6: Street field is filled.");
 
         WebElement cityElement = driver.findElement(By.id("customer.address.city"));
-        String cityValue = "Baia Mare";
-        cityElement.sendKeys(cityValue);
+        elementsMethods.fillElement(cityElement, "Baia Mare");
         System.out.println("STEP 7: City field is filled.");
 
         WebElement stateElement = driver.findElement(By.id("customer.address.state"));
-        String stateValue = "Romania";
-        stateElement.sendKeys(stateValue);
+        elementsMethods.fillElement(stateElement, "Romania");
         System.out.println("STEP 8: State field is filled.");
 
         WebElement zipElement = driver.findElement(By.id("customer.address.zipCode"));
-        String zipValue = "123456";
-        zipElement.sendKeys(zipValue);
+        elementsMethods.fillElement(zipElement, "123456");
         System.out.println("STEP 9: Zip Code field is filled.");
 
         WebElement phoneElement = driver.findElement(By.id("customer.phoneNumber"));
-        String phoneValue = "0722000000";
-        phoneElement.sendKeys(phoneValue);
+        elementsMethods.fillElement(phoneElement, "0722000000");
         System.out.println("STEP 10: Phone field is filled.");
 
         WebElement ssnElement = driver.findElement(By.id("customer.ssn"));
-        String ssnValue = "123-45-678";
-        ssnElement.sendKeys(ssnValue);
+        elementsMethods.fillElement(ssnElement, "123-45-678");
         System.out.println("STEP 11: SSN field is filled.");
 
         WebElement usernameElement = driver.findElement(By.id("customer.username"));
         String usernameValue = "oana" + System.currentTimeMillis();
-        usernameElement.sendKeys(usernameValue);
+        elementsMethods.fillElement(usernameElement, usernameValue);
         System.out.println("STEP 12: Username field is filled.");
 
         WebElement passwordElement = driver.findElement(By.id("customer.password"));
-        String passwordValue = "Parola123!";
-        passwordElement.sendKeys(passwordValue);
+        elementsMethods.fillElement(passwordElement, "Parola123!");
         System.out.println("STEP 13: Password field is filled.");
 
         WebElement confirmPasswordElement = driver.findElement(By.id("repeatedPassword"));
-        String confirmPasswordValue = "Parola123!";
-        confirmPasswordElement.sendKeys(confirmPasswordValue);
+        elementsMethods.fillElement(confirmPasswordElement, "Parola123!");
         System.out.println("STEP 14: Confirm Password field is filled.");
 
         WebElement registerButtonElement = driver.findElement(By.xpath("//input[@value='Register']"));
-        registerButtonElement.click();
+        elementsMethods.clickElement(registerButtonElement);
         System.out.println("STEP 15: Register button is clicked.");
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement successMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(),'Your account was created successfully')]")));
-        String successMessageText = successMessageElement.getText();
+        String successMessageText = elementsMethods.getElementText(successMessageElement);
         System.out.println("STEP 15.1: Registration success message is displayed: " + successMessageText);
 
         WebElement accountsOverviewLinkElement = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Accounts Overview")));
-        accountsOverviewLinkElement.click();
+        elementsMethods.clickElement(accountsOverviewLinkElement);
         System.out.println("STEP 16: Accounts Overview page is opened.");
 
         WebElement firstAccountLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@id='accountTable']//a")));
         System.out.println("STEP 17: Account table is captured.");
-        firstAccountLink.click();
+        elementsMethods.clickElement(firstAccountLink);
         System.out.println("STEP 18: First account link is clicked.");
 
         WebElement pageTitleElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Account Details')]")));
-        String actualPageTitle = pageTitleElement.getText();
+        String actualPageTitle = elementsMethods.getElementText(pageTitleElement);
         System.out.println("STEP 19: Account Details title is captured.");
 
         Assert.assertTrue(actualPageTitle.contains("Account Details"), "The Account Details page was not loaded.");
