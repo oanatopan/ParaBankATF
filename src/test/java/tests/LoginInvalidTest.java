@@ -1,40 +1,27 @@
 package tests;
 
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
+import sharedData.SharedData;
 
-public class LoginInvalidTest {
-
-    public WebDriver driver;
+public class LoginInvalidTest extends SharedData {
 
     @Test
     public void metodaTest() {
 
-        driver = new ChromeDriver();
-        System.out.println("STEP 1: The browser is opened.");
-        driver.manage().window().maximize();
-        System.out.println("STEP 2: The browser is maximized.");
         driver.get("https://parabank.parasoft.com/parabank/index.htm");
         driver.manage().deleteAllCookies();
         driver.navigate().refresh();
-        System.out.println("STEP 3: The Login page is opened.");
-
-        LoginPage loginPage = new LoginPage(driver);
+        System.out.println("STEP 1: The Login page is opened.");
+        System.out.println("STEP 1: The Login page is opened.");
 
         loginPage.loginInvalidProcess();
-        System.out.println("STEP 4: The invalid login form is completed and submitted.");
+        System.out.println("STEP 2: The invalid login form is completed and submitted.");
 
         String actualErrorTitle = loginPage.getErrorTitle();
-        System.out.println("STEP 5: The error title is captured.");
+        System.out.println("STEP 3: The error title is captured.");
 
         Assert.assertFalse(actualErrorTitle.isEmpty(), "Error page was not displayed.");
-        System.out.println("STEP 6: The invalid login error is validated.");
-
-        driver.quit();
-        System.out.println("STEP 7: The browser is closed.");
+        System.out.println("STEP 4: The invalid login error is validated.");
     }
 }
