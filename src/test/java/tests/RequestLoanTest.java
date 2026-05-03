@@ -1,14 +1,13 @@
 package tests;
 
 import helpMethods.ElementsMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AccountServicesPage;
+import pages.RegisterPage;
+import pages.RequestLoanPage;
 
 import java.time.Duration;
 
@@ -30,81 +29,28 @@ public class RequestLoanTest {
         System.out.println("STEP 3: The Register page is opened.");
 
         elementsMethods = new ElementsMethods(driver);
+        RegisterPage registerPage = new RegisterPage(driver);
+        AccountServicesPage accountServicesPage = new AccountServicesPage(driver);
+        RequestLoanPage requestLoanPage = new RequestLoanPage(driver);
 
-        WebElement firstNameElement = driver.findElement(By.id("customer.firstName"));
-        elementsMethods.fillElement(firstNameElement, "Oana");
-        System.out.println("STEP 4: First Name field is filled.");
-
-        WebElement lastNameElement = driver.findElement(By.id("customer.lastName"));
-        elementsMethods.fillElement(lastNameElement, "Topan");
-        System.out.println("STEP 5: Last Name field is filled.");
-
-        WebElement streetElement = driver.findElement(By.id("customer.address.street"));
-        elementsMethods.fillElement(streetElement, "Republicii");
-        System.out.println("STEP 6: Street field is filled.");
-
-        WebElement cityElement = driver.findElement(By.id("customer.address.city"));
-        elementsMethods.fillElement(cityElement, "Baia Mare");
-        System.out.println("STEP 7: City field is filled.");
-
-        WebElement stateElement = driver.findElement(By.id("customer.address.state"));
-        elementsMethods.fillElement(stateElement, "Romania");
-        System.out.println("STEP 8: State field is filled.");
-
-        WebElement zipElement = driver.findElement(By.id("customer.address.zipCode"));
-        elementsMethods.fillElement(zipElement, "123456");
-        System.out.println("STEP 9: Zip Code field is filled.");
-
-        WebElement phoneElement = driver.findElement(By.id("customer.phoneNumber"));
-        elementsMethods.fillElement(phoneElement, "0722000000");
-        System.out.println("STEP 10: Phone field is filled.");
-
-        WebElement ssnElement = driver.findElement(By.id("customer.ssn"));
-        elementsMethods.fillElement(ssnElement, "123-45-678");
-        System.out.println("STEP 11: SSN field is filled.");
-
-        WebElement usernameElement = driver.findElement(By.id("customer.username"));
         String usernameValue = "oana" + System.currentTimeMillis();
-        elementsMethods.fillElement(usernameElement, usernameValue);
-        System.out.println("STEP 12: Username field is filled.");
+        registerPage.registerProcess(usernameValue);
+        System.out.println("STEP 4: The Register form is completed and submitted.");
 
-        WebElement passwordElement = driver.findElement(By.id("customer.password"));
-        elementsMethods.fillElement(passwordElement, "Parola123!");
-        System.out.println("STEP 13: Password field is filled.");
+        accountServicesPage.clickRequestLoan();
+        System.out.println("STEP 5: The Request Loan page is opened.");
 
-        WebElement confirmPasswordElement = driver.findElement(By.id("repeatedPassword"));
-        elementsMethods.fillElement(confirmPasswordElement, "Parola123!");
-        System.out.println("STEP 14: Confirm Password field is filled.");
+        requestLoanPage.loanProcess();
+        System.out.println("STEP 6: The Request Loan form is completed and submitted.");
 
-        WebElement registerButtonElement = driver.findElement(By.xpath("//input[@value='Register']"));
-        elementsMethods.clickElement(registerButtonElement);
-        System.out.println("STEP 15: Register button is clicked.");
+        String actualLoanStatus = requestLoanPage.getLoanStatus();
+        System.out.println("STEP 7: The loan application status is captured: " + actualLoanStatus);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement requestLoanLinkElement = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Request Loan")));
-        elementsMethods.clickElement(requestLoanLinkElement);
-        System.out.println("STEP 16: Request Loan page is opened.");
-
-        WebElement amountElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
-        elementsMethods.fillElement(amountElement, "100");
-        System.out.println("STEP 17: Loan Amount field is filled.");
-
-        WebElement downPaymentElement = driver.findElement(By.id("downPayment"));
-        elementsMethods.fillElement(downPaymentElement, "10");
-        System.out.println("STEP 18: Down Payment field is filled.");
-
-        WebElement applyNowButtonElement = driver.findElement(By.xpath("//input[@value='Apply Now']"));
-        elementsMethods.clickElement(applyNowButtonElement);
-        System.out.println("STEP 19: Apply Now button is clicked.");
-
-        WebElement loanStatusElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loanStatus")));
-        String actualLoanStatus = elementsMethods.getElementText(loanStatusElement);
-        System.out.println("STEP 20: Loan status is captured: " + actualLoanStatus);
-
-        Assert.assertTrue(actualLoanStatus.equals("Approved") || actualLoanStatus.equals("Denied"), "Loan status is not Approved or Denied. Actual status: " + actualLoanStatus);
-        System.out.println("STEP 21: Request Loan is validated.");
+        Assert.assertTrue(actualLoanStatus.equals("Approved") || actualLoanStatus.equals("Denied"),
+                "Loan status is not Approved or Denied. Actual status: " + actualLoanStatus);
+        System.out.println("STEP 8: The loan application result is validated.");
 
         driver.quit();
-        System.out.println("STEP 22: The browser is closed.");
+        System.out.println("STEP 9: The browser is closed.");
     }
 }
