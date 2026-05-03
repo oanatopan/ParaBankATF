@@ -1,21 +1,17 @@
 package pages;
 
-import helpMethods.ElementsMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AccountsOverviewPage {
+public class AccountsOverviewPage extends BasePage{
 
-    public WebDriver driver;
-    public ElementsMethods elementsMethods;
+
 
     public AccountsOverviewPage(WebDriver driver) {
-        this.driver = driver;
-        elementsMethods = new ElementsMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
+
     }
 
     @FindBy(id = "accountTable")

@@ -1,24 +1,16 @@
 package pages;
 
-import helpMethods.ElementsMethods;
-import helpMethods.SelectMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class TransferFundsPage {
+public class TransferFundsPage extends BasePage {
 
-    public WebDriver driver;
-    public ElementsMethods elementsMethods;
-    public SelectMethods selectMethods;
 
     public TransferFundsPage(WebDriver driver) {
-        this.driver = driver;
-        elementsMethods = new ElementsMethods(this.driver);
-        selectMethods = new SelectMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
+
     }
 
     @FindBy(id = "fromAccountId")

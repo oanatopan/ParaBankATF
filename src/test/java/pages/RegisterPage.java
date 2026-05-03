@@ -1,24 +1,18 @@
 package pages;
 
-import helpMethods.ElementsMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class RegisterPage {
-
-    public WebDriver driver;
-    public ElementsMethods elementsMethods;
+public class RegisterPage extends BasePage{
 
     public RegisterPage(WebDriver driver) {
-        this.driver = driver;
-        elementsMethods = new ElementsMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
+
     }
 
     @FindBy(id = "customer.firstName")

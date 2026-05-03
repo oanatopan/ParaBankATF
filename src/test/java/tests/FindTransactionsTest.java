@@ -1,7 +1,5 @@
 package tests;
 
-import helpMethods.ElementsMethods;
-import helpMethods.SelectMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -14,10 +12,8 @@ import pages.RegisterPage;
 import java.time.Duration;
 
 public class FindTransactionsTest {
-
     public WebDriver driver;
-    ElementsMethods elementsMethods;
-    SelectMethods selectMethods;
+
 
     @Test
     public void metodaTest() {
@@ -31,8 +27,6 @@ public class FindTransactionsTest {
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
         System.out.println("STEP 3: The Register page is opened.");
 
-        elementsMethods = new ElementsMethods(driver);
-        selectMethods = new SelectMethods(driver);
         RegisterPage registerPage = new RegisterPage(driver);
         AccountServicesPage accountServicesPage = new AccountServicesPage(driver);
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(driver);

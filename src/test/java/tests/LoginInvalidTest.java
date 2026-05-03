@@ -1,6 +1,6 @@
 package tests;
 
-import helpMethods.ElementsMethods;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -10,7 +10,6 @@ import pages.LoginPage;
 public class LoginInvalidTest {
 
     public WebDriver driver;
-    ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest() {
@@ -24,7 +23,6 @@ public class LoginInvalidTest {
         driver.navigate().refresh();
         System.out.println("STEP 3: The Login page is opened.");
 
-        elementsMethods = new ElementsMethods(driver);
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.loginInvalidProcess();

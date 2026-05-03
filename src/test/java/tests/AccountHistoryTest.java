@@ -1,6 +1,5 @@
 package tests;
 
-import helpMethods.ElementsMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -13,7 +12,6 @@ import pages.RegisterPage;
 public class AccountHistoryTest {
 
     public WebDriver driver;
-    ElementsMethods elementsMethods;
 
     @Test
     public void metodaTest() {
@@ -26,7 +24,6 @@ public class AccountHistoryTest {
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
         System.out.println("STEP 3: The Register page is opened.");
 
-        elementsMethods = new ElementsMethods(driver);
         RegisterPage registerPage = new RegisterPage(driver);
         AccountServicesPage accountServicesPage = new AccountServicesPage(driver);
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(driver);
