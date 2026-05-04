@@ -20,6 +20,8 @@ public class AccountHistoryTest extends SharedData {
 
         String usernameValue = "oana" + System.currentTimeMillis();
         registerPage.registerProcess(usernameValue);
+        String successMessageText = registerPage.getSuccessMessage();
+        Assert.assertFalse(successMessageText.isEmpty(), "Registration success message was not displayed.");
 
         accountServicesPage.clickAccountsOverview();
         accountsOverviewPage.clickFirstAccount();

@@ -5,14 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
 import java.util.List;
 
-public class RegisterPage extends BasePage{
+public class RegisterPage extends BasePage {
 
     public RegisterPage(WebDriver driver) {
         super(driver);
-
     }
 
     @FindBy(id = "customer.firstName")
@@ -56,40 +56,40 @@ public class RegisterPage extends BasePage{
 
     public void registerProcess(String usernameValue) {
         elementsMethods.fillElement(firstNameElement, "Oana");
-        System.out.println("The user fills in the First Name field.");
+        LogUtility.infoLog("The user fills first name field with value: Oana");
 
         elementsMethods.fillElement(lastNameElement, "Topan");
-        System.out.println("The user fills in the Last Name field.");
+        LogUtility.infoLog("The user fills last name field with value: Topan");
 
         elementsMethods.fillElement(streetElement, "Republicii");
-        System.out.println("The user fills in the Street field.");
+        LogUtility.infoLog("The user fills street field with value: Republicii");
 
         elementsMethods.fillElement(cityElement, "Baia Mare");
-        System.out.println("The user fills in the City field.");
+        LogUtility.infoLog("The user fills city field with value: Baia Mare");
 
         elementsMethods.fillElement(stateElement, "Romania");
-        System.out.println("The user fills in the State field.");
+        LogUtility.infoLog("The user fills state field with value: Romania");
 
         elementsMethods.fillElement(zipElement, "123456");
-        System.out.println("The user fills in the Zip Code field.");
+        LogUtility.infoLog("The user fills zip code field with value: 123456");
 
         elementsMethods.fillElement(phoneElement, "0722000000");
-        System.out.println("The user fills in the Phone field.");
+        LogUtility.infoLog("The user fills phone number field with value: 0722000000");
 
         elementsMethods.fillElement(ssnElement, "123-45-678");
-        System.out.println("The user fills in the SSN field.");
+        LogUtility.infoLog("The user fills SSN field with value: 123-45-678");
 
         elementsMethods.fillElement(usernameElement, usernameValue);
-        System.out.println("The user fills in the Username field.");
+        LogUtility.infoLog("The user fills username field with value: " + usernameValue);
 
         elementsMethods.fillElement(passwordElement, "Parola123!");
-        System.out.println("The user fills in the Password field.");
+        LogUtility.infoLog("The user fills password field");
 
         elementsMethods.fillElement(confirmPasswordElement, "Parola123!");
-        System.out.println("The user fills in the Confirm Password field.");
+        LogUtility.infoLog("The user fills confirm password field");
 
         elementsMethods.clickElement(registerButtonElement);
-        System.out.println("The user clicks the Register button.");
+        LogUtility.infoLog("The user clicks on Register button");
     }
 
     public String getRegistrationError() {

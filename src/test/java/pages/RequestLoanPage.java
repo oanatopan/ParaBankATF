@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
 public class RequestLoanPage extends BasePage {
 
     public RequestLoanPage(WebDriver driver) {
         super(driver);
-
     }
 
     @FindBy(id = "amount")
@@ -28,13 +28,13 @@ public class RequestLoanPage extends BasePage {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(amountElement));
 
         elementsMethods.fillElement(amountElement, "100");
-        System.out.println("The user fills in the Loan Amount field.");
+        LogUtility.infoLog("The user fills loan amount field with value: 100");
 
         elementsMethods.fillElement(downPaymentElement, "10");
-        System.out.println("The user fills in the Down Payment field.");
+        LogUtility.infoLog("The user fills down payment field with value: 10");
 
         elementsMethods.clickElement(applyNowButtonElement);
-        System.out.println("The user clicks the Apply Now button.");
+        LogUtility.infoLog("The user clicks on Apply Now button");
     }
 
     public String getLoanStatus() {

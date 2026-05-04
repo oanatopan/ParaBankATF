@@ -4,13 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
 public class TransferFundsPage extends BasePage {
 
-
     public TransferFundsPage(WebDriver driver) {
         super(driver);
-
     }
 
     @FindBy(id = "fromAccountId")
@@ -31,16 +30,16 @@ public class TransferFundsPage extends BasePage {
     public void transferProcess() {
         WebElement fromAccountDropdown = elementsMethods.waitClickableElement(fromAccountDropdownElement);
         selectMethods.selectByIndex(fromAccountDropdown, 0);
-        System.out.println("The user selects the source account from the dropdown.");
+        LogUtility.infoLog("The user selects first available account from From Account dropdown");
 
         selectMethods.selectByIndex(toAccountDropdownElement, 1);
-        System.out.println("The user selects the destination account from the dropdown.");
+        LogUtility.infoLog("The user selects second available account from To Account dropdown");
 
         elementsMethods.fillElement(amountElement, "100");
-        System.out.println("The user fills in the transfer amount.");
+        LogUtility.infoLog("The user fills amount field with value: 100");
 
         elementsMethods.clickElement(transferButtonElement);
-        System.out.println("The user clicks the Transfer button.");
+        LogUtility.infoLog("The user clicks on Transfer button");
     }
 
     public String getTransferResult() {

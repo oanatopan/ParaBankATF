@@ -4,12 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
-public class AccountActivityPage extends BasePage{
+public class AccountActivityPage extends BasePage {
+
     public AccountActivityPage(WebDriver driver) {
         super(driver);
     }
-
 
     @FindBy(id = "month")
     public WebElement monthSelectElement;
@@ -30,13 +31,13 @@ public class AccountActivityPage extends BasePage{
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(monthSelectElement));
 
         selectMethods.selectByVisibleText(monthSelectElement, "All");
-        System.out.println("The user sets the Activity Period filter to All.");
+        LogUtility.infoLog("The user selects All from activity period dropdown");
 
         selectMethods.selectByVisibleText(typeSelectElement, "All");
-        System.out.println("The user sets the Transaction Type filter to All.");
+        LogUtility.infoLog("The user selects All from transaction type dropdown");
 
         elementsMethods.clickElement(goButtonElement);
-        System.out.println("The user clicks the Go button.");
+        LogUtility.infoLog("The user clicks on Go button");
     }
 
     public String getActivityTitle() {

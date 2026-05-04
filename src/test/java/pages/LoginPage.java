@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-
     }
 
     @FindBy(name = "username")
@@ -29,31 +29,32 @@ public class LoginPage extends BasePage{
 
     public void loginInvalidProcess() {
         elementsMethods.fillElement(usernameElement, "utilizator_inexistent");
-        System.out.println("The user fills in the Username field.");
+        LogUtility.infoLog("The user fills username field with value: utilizator_inexistent");
 
         elementsMethods.fillElement(passwordElement, "parola123");
-        System.out.println("The user fills in the Password field.");
+        LogUtility.infoLog("The user fills password field with value: parola123");
 
         elementsMethods.clickJS(loginButtonElement);
-        System.out.println("The user clicks the Log In button.");
+        LogUtility.infoLog("The user clicks on Log In button");
     }
 
     public void loginValidProcess(String username, String password) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(usernameElement));
 
         elementsMethods.fillElement(usernameElement, username);
-        System.out.println("The user fills in the Login Username field.");
+        LogUtility.infoLog("The user fills username field with value: " + username);
 
         elementsMethods.fillElement(passwordElement, password);
-        System.out.println("The user fills in the Login Password field.");
+        LogUtility.infoLog("The user fills password field");
 
         elementsMethods.clickElement(loginButtonElement);
-        System.out.println("The user clicks the Log In button.");
+        LogUtility.infoLog("The user clicks on Log In button");
     }
 
     public void clickLogOut() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(logOutElement));
         elementsMethods.clickElement(logOutElement);
+        LogUtility.infoLog("The user clicks on Log Out link");
     }
 
     public String getErrorTitle() {

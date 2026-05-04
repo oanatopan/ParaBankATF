@@ -4,14 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LogUtility;
 
-public class AccountsOverviewPage extends BasePage{
-
-
+public class AccountsOverviewPage extends BasePage {
 
     public AccountsOverviewPage(WebDriver driver) {
         super(driver);
-
     }
 
     @FindBy(id = "accountTable")
@@ -28,6 +26,6 @@ public class AccountsOverviewPage extends BasePage{
     public void clickFirstAccount() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(firstAccountLinkElement));
         elementsMethods.clickElement(firstAccountLinkElement);
-        System.out.println("The user clicks the first account link.");
+        LogUtility.infoLog("The user clicks on first account link");
     }
 }
