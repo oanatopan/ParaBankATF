@@ -1,5 +1,7 @@
 package tests;
 
+import modelObject.BillPayModel;
+import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountServicesPage;
@@ -12,15 +14,17 @@ public class BillPayTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        RegisterModel registerData = new RegisterModel("RegisterData.json");
+        BillPayModel billPayData = new BillPayModel("BillPayData.json");
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         BillPayPage billPayPage = new BillPayPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickBillPay();
-        billPayPage.billPayProcess();
+        billPayPage.billPayProcess(billPayData);
 
         String actualBillPayResult = billPayPage.getBillPayResult();
         Assert.assertTrue(actualBillPayResult.toLowerCase().contains("bill payment complete"),

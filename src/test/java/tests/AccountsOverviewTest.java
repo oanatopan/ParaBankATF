@@ -1,5 +1,6 @@
 package tests;
 
+import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountServicesPage;
@@ -12,12 +13,13 @@ public class AccountsOverviewTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        RegisterModel testData = new RegisterModel("RegisterData.json");
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, testData);
 
         String registrationError = registerPage.getRegistrationError();
         if (!registrationError.isEmpty()) {

@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.BillPayModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,33 +49,33 @@ public class BillPayPage extends BasePage {
     @FindBy(id = "billpayResult")
     public WebElement billPayResultElement;
 
-    public void billPayProcess() {
-        elementsMethods.fillElement(payeeNameElement, "Electrica SA");
-        LogUtility.infoLog("The user fills payee name field with value: Electrica SA");
+    public void billPayProcess(BillPayModel testData) {
+        elementsMethods.fillElement(payeeNameElement, testData.getPayeeName());
+        LogUtility.infoLog("The user fills payee name field with value: " + testData.getPayeeName());
 
-        elementsMethods.fillElement(payeeStreetElement, "Str. Energiei 10");
-        LogUtility.infoLog("The user fills payee street field with value: Str. Energiei 10");
+        elementsMethods.fillElement(payeeStreetElement, testData.getAddress());
+        LogUtility.infoLog("The user fills payee street field with value: " + testData.getAddress());
 
-        elementsMethods.fillElement(payeeCityElement, "Baia Mare");
-        LogUtility.infoLog("The user fills payee city field with value: Baia Mare");
+        elementsMethods.fillElement(payeeCityElement, testData.getCity());
+        LogUtility.infoLog("The user fills payee city field with value: " + testData.getCity());
 
-        elementsMethods.fillElement(payeeStateElement, "Maramures");
-        LogUtility.infoLog("The user fills payee state field with value: Maramures");
+        elementsMethods.fillElement(payeeStateElement, testData.getState());
+        LogUtility.infoLog("The user fills payee state field with value: " + testData.getState());
 
-        elementsMethods.fillElement(payeeZipElement, "430001");
-        LogUtility.infoLog("The user fills payee zip code field with value: 430001");
+        elementsMethods.fillElement(payeeZipElement, testData.getZipCode());
+        LogUtility.infoLog("The user fills payee zip code field with value: " + testData.getZipCode());
 
-        elementsMethods.fillElement(payeePhoneElement, "0744111222");
-        LogUtility.infoLog("The user fills payee phone number field with value: 0744111222");
+        elementsMethods.fillElement(payeePhoneElement, testData.getPhone());
+        LogUtility.infoLog("The user fills payee phone number field with value: " + testData.getPhone());
 
-        elementsMethods.fillElement(accountNumberElement, "12345");
-        LogUtility.infoLog("The user fills account number field with value: 12345");
+        elementsMethods.fillElement(accountNumberElement, testData.getAccountNumber());
+        LogUtility.infoLog("The user fills account number field");
 
-        elementsMethods.fillElement(verifyAccountElement, "12345");
-        LogUtility.infoLog("The user fills verify account field with value: 12345");
+        elementsMethods.fillElement(verifyAccountElement, testData.getVerifyAccount());
+        LogUtility.infoLog("The user fills verify account field");
 
-        elementsMethods.fillElement(amountElement, "50");
-        LogUtility.infoLog("The user fills amount field with value: 50");
+        elementsMethods.fillElement(amountElement, testData.getAmount());
+        LogUtility.infoLog("The user fills amount field with value: " + testData.getAmount());
 
         selectMethods.selectByIndex(fromAccountDropdownElement, 0);
         LogUtility.infoLog("The user selects first available account from source account dropdown");

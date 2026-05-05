@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.FindTransactionsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,14 +28,14 @@ public class AccountActivityPage extends BasePage {
     @FindBy(id = "rightPanel")
     public WebElement rightPanelElement;
 
-    public void filterProcess() {
+    public void filterProcess(FindTransactionsModel testData) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(monthSelectElement));
 
-        selectMethods.selectByVisibleText(monthSelectElement, "All");
-        LogUtility.infoLog("The user selects All from activity period dropdown");
+        selectMethods.selectByVisibleText(monthSelectElement, testData.getActivityPeriod());
+        LogUtility.infoLog("The user selects " + testData.getActivityPeriod() + " from activity period dropdown");
 
-        selectMethods.selectByVisibleText(typeSelectElement, "All");
-        LogUtility.infoLog("The user selects All from transaction type dropdown");
+        selectMethods.selectByVisibleText(typeSelectElement, testData.getTransactionType());
+        LogUtility.infoLog("The user selects " + testData.getTransactionType() + " from transaction type dropdown");
 
         elementsMethods.clickElement(goButtonElement);
         LogUtility.infoLog("The user clicks on Go button");

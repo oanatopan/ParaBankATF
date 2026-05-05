@@ -1,5 +1,7 @@
 package tests;
 
+import modelObject.RegisterModel;
+import modelObject.RequestLoanModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountServicesPage;
@@ -12,18 +14,22 @@ public class RequestLoanTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        RegisterModel registerData = new RegisterModel("RegisterData.json");
+        RequestLoanModel loanData = new RequestLoanModel("RequestLoanData.json");
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         RequestLoanPage requestLoanPage = new RequestLoanPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickRequestLoan();
-        requestLoanPage.loanProcess();
+        requestLoanPage.loanProcess(loanData);
 
         String actualLoanStatus = requestLoanPage.getLoanStatus();
-        Assert.assertTrue(actualLoanStatus.equals("Approved") || actualLoanStatus.equals("Denied"),
+        Assert.assertTrue(
+                actualLoanStatus.equals(loanData.getApprovedStatus()) ||
+                        actualLoanStatus.equals(loanData.getDeniedStatus()),
                 "Loan status is not Approved or Denied. Actual status: " + actualLoanStatus);
     }
 }

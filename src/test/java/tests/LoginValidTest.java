@@ -1,5 +1,7 @@
 package tests;
 
+import modelObject.LoginModel;
+import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -11,15 +13,15 @@ public class LoginValidTest extends SharedData {
     @Test
     public void metodaTest() {
 
-        RegisterPage registerPage = new RegisterPage(getDriver());
+        RegisterModel registerData = new RegisterModel("RegisterData.json");
         LoginPage loginPage = new LoginPage(getDriver());
+        RegisterPage registerPage = new RegisterPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        String passwordValue = "Parola123!";
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, registerData);
 
         loginPage.clickLogOut();
-        loginPage.loginValidProcess(usernameValue, passwordValue);
+        loginPage.loginValidProcess(usernameValue, registerData.getPassword());
 
         String logOutAfterLoginText = loginPage.getLogOutText();
         Assert.assertEquals(logOutAfterLoginText, "Log Out", "Login was not successful.");

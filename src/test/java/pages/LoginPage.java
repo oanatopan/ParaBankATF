@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.LoginModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,12 +28,12 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//h1[@class='title']")
     public WebElement errorTitleElement;
 
-    public void loginInvalidProcess() {
-        elementsMethods.fillElement(usernameElement, "utilizator_inexistent");
-        LogUtility.infoLog("The user fills username field with value: utilizator_inexistent");
+    public void loginInvalidProcess(LoginModel testData) {
+        elementsMethods.fillElement(usernameElement, testData.getInvalidUsername());
+        LogUtility.infoLog("The user fills username field with value: " + testData.getInvalidUsername());
 
-        elementsMethods.fillElement(passwordElement, "parola123");
-        LogUtility.infoLog("The user fills password field with value: parola123");
+        elementsMethods.fillElement(passwordElement, testData.getInvalidPassword());
+        LogUtility.infoLog("The user fills password field");
 
         elementsMethods.clickJS(loginButtonElement);
         LogUtility.infoLog("The user clicks on Log In button");

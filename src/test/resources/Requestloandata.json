@@ -1,0 +1,6 @@
+{
+  "loanAmount": "100",
+  "downPayment": "10",
+  "approvedStatus": "Approved",
+  "deniedStatus": "Denied"
+}

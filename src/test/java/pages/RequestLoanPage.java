@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.RequestLoanModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,14 +25,14 @@ public class RequestLoanPage extends BasePage {
     @FindBy(id = "loanStatus")
     public WebElement loanStatusElement;
 
-    public void loanProcess() {
+    public void loanProcess(RequestLoanModel testData) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(amountElement));
 
-        elementsMethods.fillElement(amountElement, "100");
-        LogUtility.infoLog("The user fills loan amount field with value: 100");
+        elementsMethods.fillElement(amountElement, testData.getLoanAmount());
+        LogUtility.infoLog("The user fills loan amount field with value: " + testData.getLoanAmount());
 
-        elementsMethods.fillElement(downPaymentElement, "10");
-        LogUtility.infoLog("The user fills down payment field with value: 10");
+        elementsMethods.fillElement(downPaymentElement, testData.getDownPayment());
+        LogUtility.infoLog("The user fills down payment field with value: " + testData.getDownPayment());
 
         elementsMethods.clickElement(applyNowButtonElement);
         LogUtility.infoLog("The user clicks on Apply Now button");

@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.OpenAccountModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,11 +28,11 @@ public class OpenAccountPage extends BasePage {
     @FindBy(id = "newAccountId")
     public WebElement newAccountIdElement;
 
-    public void openAccountProcess() {
+    public void openAccountProcess(OpenAccountModel testData) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(accountTypeDropdownElement));
 
-        selectMethods.selectByVisibleText(accountTypeDropdownElement, "SAVINGS");
-        LogUtility.infoLog("The user selects SAVINGS from account type dropdown");
+        selectMethods.selectByVisibleText(accountTypeDropdownElement, testData.getAccountType());
+        LogUtility.infoLog("The user selects " + testData.getAccountType() + " from account type dropdown");
 
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(fromAccountOptionElement));
         String fromAccountOptionValue = elementsMethods.getElementText(fromAccountOptionElement);

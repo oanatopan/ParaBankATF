@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.TransferFundsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,7 +28,7 @@ public class TransferFundsPage extends BasePage {
     @FindBy(id = "showResult")
     public WebElement resultElement;
 
-    public void transferProcess() {
+    public void transferProcess(TransferFundsModel testData) {
         WebElement fromAccountDropdown = elementsMethods.waitClickableElement(fromAccountDropdownElement);
         selectMethods.selectByIndex(fromAccountDropdown, 0);
         LogUtility.infoLog("The user selects first available account from From Account dropdown");
@@ -35,8 +36,8 @@ public class TransferFundsPage extends BasePage {
         selectMethods.selectByIndex(toAccountDropdownElement, 1);
         LogUtility.infoLog("The user selects second available account from To Account dropdown");
 
-        elementsMethods.fillElement(amountElement, "100");
-        LogUtility.infoLog("The user fills amount field with value: 100");
+        elementsMethods.fillElement(amountElement, testData.getAmount());
+        LogUtility.infoLog("The user fills amount field with value: " + testData.getAmount());
 
         elementsMethods.clickElement(transferButtonElement);
         LogUtility.infoLog("The user clicks on Transfer button");

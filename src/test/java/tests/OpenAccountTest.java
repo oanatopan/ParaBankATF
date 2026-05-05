@@ -1,5 +1,7 @@
 package tests;
 
+import modelObject.OpenAccountModel;
+import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountServicesPage;
@@ -12,15 +14,17 @@ public class OpenAccountTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        RegisterModel registerData = new RegisterModel("RegisterData.json");
+        OpenAccountModel openAccountData = new OpenAccountModel("OpenAccountData.json");
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         OpenAccountPage openAccountPage = new OpenAccountPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickOpenNewAccount();
-        openAccountPage.openAccountProcess();
+        openAccountPage.openAccountProcess(openAccountData);
 
         String actualNewAccountId = openAccountPage.getNewAccountId();
         Assert.assertFalse(actualNewAccountId.isEmpty(), "The new account ID was not generated.");

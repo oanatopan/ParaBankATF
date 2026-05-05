@@ -1,5 +1,6 @@
 package tests;
 
+import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
@@ -10,10 +11,11 @@ public class RegisterTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        RegisterModel testData = new RegisterModel("RegisterData.json");
         RegisterPage registerPage = new RegisterPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis();
-        registerPage.registerProcess(usernameValue);
+        registerPage.registerProcess(usernameValue, testData);
 
         String actualSuccessMessage = registerPage.getSuccessMessage();
         Assert.assertTrue(actualSuccessMessage.contains("Your account was created successfully. You are now logged in."),
