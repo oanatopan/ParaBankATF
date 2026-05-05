@@ -8,7 +8,7 @@ import sharedData.SharedData;
 
 public class LoginInvalidTest extends SharedData {
 
-    @Test
+    @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
         LoginModel testData = new LoginModel("LoginData.json");

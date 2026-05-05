@@ -10,7 +10,7 @@ import sharedData.SharedData;
 
 public class AccountsOverviewTest extends SharedData {
 
-    @Test
+    @Test(groups = {"RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel testData = new RegisterModel("RegisterData.json");

@@ -11,7 +11,7 @@ import sharedData.SharedData;
 
 public class OpenAccountTest extends SharedData {
 
-    @Test
+    @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

@@ -8,7 +8,7 @@ import sharedData.SharedData;
 
 public class RegisterTest extends SharedData {
 
-    @Test
+    @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel testData = new RegisterModel("RegisterData.json");

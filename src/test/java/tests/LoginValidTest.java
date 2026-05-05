@@ -10,7 +10,7 @@ import sharedData.SharedData;
 
 public class LoginValidTest extends SharedData {
 
-    @Test
+    @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

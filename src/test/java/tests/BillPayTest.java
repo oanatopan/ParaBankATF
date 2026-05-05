@@ -11,7 +11,7 @@ import sharedData.SharedData;
 
 public class BillPayTest extends SharedData {
 
-    @Test
+    @Test(groups = {"RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

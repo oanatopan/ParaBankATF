@@ -10,7 +10,7 @@ import sharedData.SharedData;
 
 public class LogOutTest extends SharedData {
 
-    @Test
+    @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
         RegisterModel testData = new RegisterModel("RegisterData.json");
