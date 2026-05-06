@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       suitename:
-        description: "Please specify the suite name (@SmokeSuite, @RegressionSuite, @CustomerSuite)"
+        description: "Please specify the suite name (@SmokeSuite, @RegressionSuite )"
         required: true
         default: "@SmokeSuite"
 
