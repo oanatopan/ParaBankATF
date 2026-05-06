@@ -20,7 +20,7 @@ public class BillPayTest extends SharedData {
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         BillPayPage billPayPage = new BillPayPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickBillPay();

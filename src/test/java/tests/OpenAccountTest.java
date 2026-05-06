@@ -20,7 +20,7 @@ public class OpenAccountTest extends SharedData {
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         OpenAccountPage openAccountPage = new OpenAccountPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickOpenNewAccount();

@@ -22,7 +22,7 @@ public class FindTransactionsTest extends SharedData {
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(getDriver());
         AccountActivityPage accountActivityPage = new AccountActivityPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickAccountsOverview();

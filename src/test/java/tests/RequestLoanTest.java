@@ -20,7 +20,7 @@ public class RequestLoanTest extends SharedData {
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         RequestLoanPage requestLoanPage = new RequestLoanPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickRequestLoan();

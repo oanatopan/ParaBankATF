@@ -18,7 +18,7 @@ public class LogOutTest extends SharedData {
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         LoginPage loginPage = new LoginPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, testData);
 
         accountServicesPage.clickLogOut();

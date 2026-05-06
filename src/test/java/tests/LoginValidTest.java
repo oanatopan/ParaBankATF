@@ -17,7 +17,7 @@ public class LoginValidTest extends SharedData {
         LoginPage loginPage = new LoginPage(getDriver());
         RegisterPage registerPage = new RegisterPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         loginPage.clickLogOut();

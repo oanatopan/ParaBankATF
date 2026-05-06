@@ -1,5 +1,8 @@
 package sharedData;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -45,7 +48,10 @@ public class SharedData {
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
         LogUtility.infoLog("The user navigates to: " + driver.getCurrentUrl());
     }
-
+    @Attachment(value = "Screenshot", type = "image/png")
+    public byte[] saveScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
     @AfterMethod(alwaysRun = true)
     public void clearEnvironment() {
         if (driver != null) {

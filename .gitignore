@@ -1,21 +1,29 @@
-# Maven - ignoră folderul unde se compilează codul
+# Maven
 target/
 
-# IntelliJ IDEA - ignoră setările locale ale IDE-ului
+# IntelliJ IDEA
 .idea/
 *.iml
 out/
 gen/
 
-# Log-uri de eroare (cum era cel din screenshot-ul tău)
+# Logs
 *.log
 hs_err_pid*
 
-# Sistem de operare
+# OS
 .DS_Store
 Thumbs.db
 
-# Maven wrapper
+# Maven wrapper (opțional, dar de obicei se păstrează în proiecte reale)
 .mvn/
 mvnw
 mvnw.cmd
+
+# Allure
+.allure/
+allure-report/
+allure-results/
+
+# Logs
+logs/

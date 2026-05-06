@@ -24,7 +24,7 @@ public class TransferFundsTest extends SharedData {
         OpenAccountPage openAccountPage = new OpenAccountPage(getDriver());
         TransferFundsPage transferFundsPage = new TransferFundsPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis();
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
         registerPage.registerProcess(usernameValue, registerData);
 
         accountServicesPage.clickOpenNewAccount();
