@@ -1,5 +1,6 @@
 package tests;
 
+import dataBase.DataBaseQueries;
 import modelObject.BillPayModel;
 import modelObject.RegisterModel;
 import org.testng.Assert;
@@ -14,8 +15,9 @@ public class BillPayTest extends SharedData {
     @Test(groups = {"RegressionSuite"})
     public void metodaTest() {
 
-        RegisterModel registerData = new RegisterModel("RegisterData.json");
-        BillPayModel billPayData = new BillPayModel("BillPayData.json");
+        DataBaseQueries db = new DataBaseQueries();
+        RegisterModel registerData = db.getRegisterData();
+        BillPayModel billPayData = db.getBillPayData();
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         BillPayPage billPayPage = new BillPayPage(getDriver());

@@ -12,6 +12,8 @@ public class RequestLoanModel {
     private String approvedStatus;
     private String deniedStatus;
 
+    public RequestLoanModel() {}
+
     public RequestLoanModel(String filePath) {
         loadFromJson(filePath);
     }

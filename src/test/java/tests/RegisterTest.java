@@ -1,5 +1,6 @@
 package tests;
 
+import dataBase.DataBaseQueries;
 import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +12,8 @@ public class RegisterTest extends SharedData {
     @Test(groups = {"SmokeSuite", "RegressionSuite"})
     public void metodaTest() {
 
-        RegisterModel testData = new RegisterModel("RegisterData.json");
+        DataBaseQueries db = new DataBaseQueries();
+        RegisterModel testData = db.getRegisterData();
         RegisterPage registerPage = new RegisterPage(getDriver());
 
         String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();

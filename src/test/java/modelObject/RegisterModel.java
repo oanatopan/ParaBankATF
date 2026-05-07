@@ -17,6 +17,8 @@ public class RegisterModel {
     private String ssn;
     private String password;
 
+    public RegisterModel() {}
+
     public RegisterModel(String filePath) {
         loadFromJson(filePath);
     }

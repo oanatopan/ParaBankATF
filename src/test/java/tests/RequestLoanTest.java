@@ -1,5 +1,6 @@
 package tests;
 
+import dataBase.DataBaseQueries;
 import modelObject.RegisterModel;
 import modelObject.RequestLoanModel;
 import org.testng.Assert;
@@ -14,8 +15,9 @@ public class RequestLoanTest extends SharedData {
     @Test(groups = {"RegressionSuite"})
     public void metodaTest() {
 
-        RegisterModel registerData = new RegisterModel("RegisterData.json");
-        RequestLoanModel loanData = new RequestLoanModel("RequestLoanData.json");
+        DataBaseQueries db = new DataBaseQueries();
+        RegisterModel registerData = db.getRegisterData();
+        RequestLoanModel loanData = db.getLoanData();
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         RequestLoanPage requestLoanPage = new RequestLoanPage(getDriver());

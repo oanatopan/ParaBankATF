@@ -17,6 +17,8 @@ public class BillPayModel {
     private String verifyAccount;
     private String amount;
 
+    public BillPayModel() {}
+
     public BillPayModel(String filePath) {
         loadFromJson(filePath);
     }
