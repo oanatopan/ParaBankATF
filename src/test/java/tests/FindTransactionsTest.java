@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.FindTransactionsModel;
 import modelObject.RegisterModel;
 import org.testng.Assert;
@@ -10,9 +12,11 @@ import pages.AccountsOverviewPage;
 import pages.RegisterPage;
 import sharedData.SharedData;
 
+@Feature("@Transactions")
+@Story("@FindTransactionsTest")
 public class FindTransactionsTest extends SharedData {
 
-    @Test(groups = {"RegressionSuite"})
+    @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

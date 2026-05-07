@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.RegisterModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,9 +10,11 @@ import pages.LoginPage;
 import pages.RegisterPage;
 import sharedData.SharedData;
 
+@Feature("@Authentication ")
+@Story("@LogOutTest")
 public class LogOutTest extends SharedData {
 
-    @Test(groups = {"SmokeSuite", "RegressionSuite"})
+    @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
         RegisterModel testData = new RegisterModel("RegisterData.json");

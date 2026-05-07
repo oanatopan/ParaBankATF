@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.OpenAccountModel;
 import modelObject.RegisterModel;
 import modelObject.TransferFundsModel;
@@ -11,9 +13,11 @@ import pages.RegisterPage;
 import pages.TransferFundsPage;
 import sharedData.SharedData;
 
+@Feature("@Transactions")
+@Story("@TransferFundsTest")
 public class TransferFundsTest extends SharedData {
 
-    @Test(groups = {"RegressionSuite"})
+    @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

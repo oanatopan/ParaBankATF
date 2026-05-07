@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.OpenAccountModel;
 import modelObject.RegisterModel;
 import org.testng.Assert;
@@ -9,9 +11,11 @@ import pages.OpenAccountPage;
 import pages.RegisterPage;
 import sharedData.SharedData;
 
+@Feature("@Account Management ")
+@Story("@OpenAccountTest")
 public class OpenAccountTest extends SharedData {
 
-    @Test(groups = {"SmokeSuite", "RegressionSuite"})
+    @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
         RegisterModel registerData = new RegisterModel("RegisterData.json");

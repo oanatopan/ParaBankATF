@@ -1,6 +1,8 @@
 package tests;
 
 import dataBase.DataBaseQueries;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import modelObject.RegisterModel;
 import modelObject.RequestLoanModel;
 import org.testng.Assert;
@@ -10,9 +12,11 @@ import pages.RegisterPage;
 import pages.RequestLoanPage;
 import sharedData.SharedData;
 
+@Feature("@Transactions")
+@Story("@RequestLoanTest")
 public class RequestLoanTest extends SharedData {
 
-    @Test(groups = {"RegressionSuite"})
+    @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
         DataBaseQueries db = new DataBaseQueries();
