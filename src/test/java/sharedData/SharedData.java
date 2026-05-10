@@ -1,6 +1,8 @@
 package sharedData;
 
 import modelObject.RegisterModel;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +15,10 @@ import pages.RegisterPage;
 import utils.AllureAppender;
 import utils.LogUtility;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
 
 public class SharedData {
@@ -80,6 +86,7 @@ public class SharedData {
     public void clearEnvironment(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             saveScreenshot();
+            takeDebugSnapshot("FAILED_" + testName);
         }
         if (driver != null) {
             driver.quit();
@@ -89,6 +96,18 @@ public class SharedData {
 
     public void saveScreenshot() {
         AllureAppender.attachScreenshot(driver);
+    }
+
+    private void takeDebugSnapshot(String label) {
+        try {
+            Files.createDirectories(Paths.get("target/screenshots"));
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            Files.copy(screenshot.toPath(), Paths.get("target/screenshots/" + label + ".png"));
+            Files.writeString(Paths.get("target/screenshots/" + label + ".html"), driver.getPageSource());
+            LogUtility.infoLog("Debug snapshot saved: target/screenshots/" + label);
+        } catch (IOException e) {
+            LogUtility.errorLog("Could not save debug snapshot: " + e.getMessage());
+        }
     }
 
     public WebDriver getDriver() {
