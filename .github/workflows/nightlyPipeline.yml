@@ -42,5 +42,20 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot && break
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+
+      - name: Initialize MySQL database
+        run: mysql -h 127.0.0.1 -P 3306 -u root -proot ParaBankATF < src/test/resources/database/init.sql
+
       - name: Run Automation tests
         run: mvn clean install
+        env:
+          DB_URL: jdbc:mysql://127.0.0.1:3306/ParaBankATF
+          DB_USER: root
+          DB_PASSWORD: root
