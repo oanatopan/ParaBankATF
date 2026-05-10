@@ -13,8 +13,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <otel.java.global-autoconfigure.enabled>false</otel.java.global-autoconfigure.enabled>
+    <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
-
     <dependencies>
 
         <dependency>
@@ -89,7 +89,7 @@
                 <version>3.5.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>  <!-- ← doar asta -->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
