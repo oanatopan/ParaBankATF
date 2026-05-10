@@ -4,7 +4,6 @@ import modelObject.LoginModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 public class LoginPage extends BasePage {
@@ -40,7 +39,7 @@ public class LoginPage extends BasePage {
     }
 
     public void loginValidProcess(String username, String password) {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(usernameElement));
+        elementsMethods.waitVisibleElement(usernameElement);
 
         elementsMethods.fillElement(usernameElement, username);
         LogUtility.infoLog("The user fills in the username field with value: " + username);
@@ -53,23 +52,23 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLogOut() {
-        elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(logOutElement));
+        elementsMethods.waitVisibleElement(logOutElement);
         elementsMethods.clickElement(logOutElement);
         LogUtility.infoLog("The user clicks on the Log Out link");
     }
 
     public String getErrorTitle() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(errorTitleElement));
+        elementsMethods.waitVisibleElement(errorTitleElement);
         return elementsMethods.getElementText(errorTitleElement);
     }
 
     public String getLogOutText() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(logOutElement));
+        elementsMethods.waitVisibleElement(logOutElement);
         return elementsMethods.getElementText(logOutElement);
     }
 
     public String getLoginButtonValue() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(loginButtonElement));
+        elementsMethods.waitVisibleElement(loginButtonElement);
         return loginButtonElement.getAttribute("value");
     }
 }

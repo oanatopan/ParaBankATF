@@ -4,7 +4,6 @@ import modelObject.TransferFundsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 public class TransferFundsPage extends BasePage {
@@ -44,7 +43,7 @@ public class TransferFundsPage extends BasePage {
     }
 
     public String getTransferResult() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(resultElement));
+        elementsMethods.waitVisibleElement(resultElement);
         String transferResult = elementsMethods.getElementText(resultElement);
         LogUtility.infoLog("The user sees the transfer result: " + transferResult);
         return transferResult;

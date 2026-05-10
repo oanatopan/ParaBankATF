@@ -102,7 +102,7 @@ public class RegisterPage extends BasePage {
     }
 
     public String getSuccessMessage() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(successMessageElement));
+        elementsMethods.waitVisibleElement(successMessageElement);
         return elementsMethods.getElementText(successMessageElement);
     }
 }

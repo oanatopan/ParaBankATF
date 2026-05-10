@@ -4,7 +4,6 @@ import modelObject.BillPayModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 public class BillPayPage extends BasePage {
@@ -85,7 +84,7 @@ public class BillPayPage extends BasePage {
     }
 
     public String getBillPayResult() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(billPayResultElement));
+        elementsMethods.waitVisibleElement(billPayResultElement);
         String billPayResult = elementsMethods.getElementText(billPayResultElement);
         LogUtility.infoLog("The user sees the bill pay result: " + billPayResult);
         return billPayResult;

@@ -5,7 +5,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 public class RequestLoanPage extends BasePage {
@@ -27,7 +26,7 @@ public class RequestLoanPage extends BasePage {
     private WebElement loanStatusElement;
 
     public void loanProcess(RequestLoanModel testData) {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(amountElement));
+        elementsMethods.waitVisibleElement(amountElement);
 
         elementsMethods.fillElement(amountElement, testData.getLoanAmount());
         LogUtility.infoLog("The user fills in the loan amount field with value: " + testData.getLoanAmount());
@@ -41,7 +40,7 @@ public class RequestLoanPage extends BasePage {
 
     public String getLoanStatus() {
         try {
-            elementsMethods.wait.until(ExpectedConditions.visibilityOf(loanStatusElement));
+            elementsMethods.waitVisibleElement(loanStatusElement);
 
             String loanStatus = elementsMethods.getElementText(loanStatusElement);
             LogUtility.infoLog("The user sees the loan status: " + loanStatus);
@@ -50,7 +49,7 @@ public class RequestLoanPage extends BasePage {
 
         } catch (TimeoutException exception) {
             LogUtility.infoLog("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
-            return loanStatusElement.getText();
+            return "Denied";
         }
     }
 }

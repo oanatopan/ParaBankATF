@@ -4,7 +4,6 @@ import modelObject.FindTransactionsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 public class AccountActivityPage extends BasePage {
@@ -29,8 +28,7 @@ public class AccountActivityPage extends BasePage {
     private WebElement rightPanelElement;
 
     public void filterProcess(FindTransactionsModel testData) {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(monthSelectElement));
-
+        elementsMethods.waitVisibleElement(monthSelectElement);
         selectMethods.selectByVisibleText(monthSelectElement, testData.getActivityPeriod());
         LogUtility.infoLog("The user selects " + testData.getActivityPeriod() + " from the activity period dropdown");
 
@@ -42,7 +40,7 @@ public class AccountActivityPage extends BasePage {
     }
 
     public String getActivityTitle() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(activityTitleElement));
+        elementsMethods.waitVisibleElement(activityTitleElement);
         String activityTitle = elementsMethods.getElementText(activityTitleElement);
         LogUtility.infoLog("The user sees the Account Activity page with title: " + activityTitle);
         return activityTitle;
