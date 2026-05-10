@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class ElementsMethods {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     public WebDriverWait wait;
 
     public ElementsMethods(WebDriver driver) {

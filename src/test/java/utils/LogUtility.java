@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class LogUtility {
 
-    public static Logger logger = LogManager.getLogger(LogUtility.class);
+    public static final Logger logger = LogManager.getLogger(LogUtility.class);
 
     // anunță începutul testului
     public static void startTest(String testName) {

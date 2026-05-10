@@ -1,6 +1,7 @@
 package pages;
 
 import modelObject.RequestLoanModel;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,9 +48,9 @@ public class RequestLoanPage extends BasePage {
 
             return loanStatus;
 
-        } catch (Exception exception) {
+        } catch (TimeoutException exception) {
             LogUtility.infoLog("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
-            return "Denied";
+            return loanStatusElement.getText();
         }
     }
 }
