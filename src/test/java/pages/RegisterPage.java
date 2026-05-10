@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 import java.util.List;
 
@@ -58,40 +57,40 @@ public class RegisterPage extends BasePage {
         elementsMethods.waitVisibleElement(firstNameElement);
 
         elementsMethods.fillElement(firstNameElement, testData.getFirstName());
-        LogUtility.infoLog("The user fills in the first name field with value: " + testData.getFirstName());
+        logStep("The user fills in the first name field with value: " + testData.getFirstName());
 
         elementsMethods.fillElement(lastNameElement, testData.getLastName());
-        LogUtility.infoLog("The user fills in the last name field with value: " + testData.getLastName());
+        logStep("The user fills in the last name field with value: " + testData.getLastName());
 
         elementsMethods.fillElement(streetElement, testData.getAddress());
-        LogUtility.infoLog("The user fills in the street field with value: " + testData.getAddress());
+        logStep("The user fills in the street field with value: " + testData.getAddress());
 
         elementsMethods.fillElement(cityElement, testData.getCity());
-        LogUtility.infoLog("The user fills in the city field with value: " + testData.getCity());
+        logStep("The user fills in the city field with value: " + testData.getCity());
 
         elementsMethods.fillElement(stateElement, testData.getState());
-        LogUtility.infoLog("The user fills in the state field with value: " + testData.getState());
+        logStep("The user fills in the state field with value: " + testData.getState());
 
         elementsMethods.fillElement(zipElement, testData.getZipCode());
-        LogUtility.infoLog("The user fills in the zip code field with value: " + testData.getZipCode());
+        logStep("The user fills in the zip code field with value: " + testData.getZipCode());
 
         elementsMethods.fillElement(phoneElement, testData.getPhone());
-        LogUtility.infoLog("The user fills in the phone number field with value: " + testData.getPhone());
+        logStep("The user fills in the phone number field with value: " + testData.getPhone());
 
         elementsMethods.fillElement(ssnElement, testData.getSsn());
-        LogUtility.infoLog("The user fills in the SSN field");
+        logStep("The user fills in the SSN field");
 
         elementsMethods.fillElement(usernameElement, usernameValue);
-        LogUtility.infoLog("The user fills in the username field with value: " + usernameValue);
+        logStep("The user fills in the username field with value: " + usernameValue);
 
         elementsMethods.fillElement(passwordElement, testData.getPassword());
-        LogUtility.infoLog("The user fills in the password field");
+        logStep("The user fills in the password field");
 
         elementsMethods.fillElement(confirmPasswordElement, testData.getPassword());
-        LogUtility.infoLog("The user fills in the confirm password field");
+        logStep("The user fills in the confirm password field");
 
         elementsMethods.clickElement(registerButtonElement);
-        LogUtility.infoLog("The user clicks on the Register button");
+        logStep("The user clicks on the Register button");
     }
 
     public String getRegistrationError() {

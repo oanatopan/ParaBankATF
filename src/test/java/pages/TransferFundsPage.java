@@ -4,7 +4,6 @@ import modelObject.TransferFundsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class TransferFundsPage extends BasePage {
 
@@ -30,22 +29,22 @@ public class TransferFundsPage extends BasePage {
     public void transferProcess(TransferFundsModel testData) {
         WebElement fromAccountDropdown = elementsMethods.waitClickableElement(fromAccountDropdownElement);
         selectMethods.selectByIndex(fromAccountDropdown, 0);
-        LogUtility.infoLog("The user selects the first available account from the From Account dropdown");
+        logStep("The user selects the first available account from the From Account dropdown");
 
         selectMethods.selectByIndex(toAccountDropdownElement, 1);
-        LogUtility.infoLog("The user selects the second available account from the To Account dropdown");
+        logStep("The user selects the second available account from the To Account dropdown");
 
         elementsMethods.fillElement(amountElement, testData.getAmount());
-        LogUtility.infoLog("The user fills in the amount field with value: " + testData.getAmount());
+        logStep("The user fills in the amount field with value: " + testData.getAmount());
 
         elementsMethods.clickElement(transferButtonElement);
-        LogUtility.infoLog("The user clicks on the Transfer button");
+        logStep("The user clicks on the Transfer button");
     }
 
     public String getTransferResult() {
         elementsMethods.waitVisibleElement(resultElement);
         String transferResult = elementsMethods.getElementText(resultElement);
-        LogUtility.infoLog("The user sees the transfer result: " + transferResult);
+        logStep("The user sees the transfer result: " + transferResult);
         return transferResult;
     }
 }

@@ -5,7 +5,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class RequestLoanPage extends BasePage {
 
@@ -29,13 +28,13 @@ public class RequestLoanPage extends BasePage {
         elementsMethods.waitVisibleElement(amountElement);
 
         elementsMethods.fillElement(amountElement, testData.getLoanAmount());
-        LogUtility.infoLog("The user fills in the loan amount field with value: " + testData.getLoanAmount());
+        logStep("The user fills in the loan amount field with value: " + testData.getLoanAmount());
 
         elementsMethods.fillElement(downPaymentElement, testData.getDownPayment());
-        LogUtility.infoLog("The user fills in the down payment field with value: " + testData.getDownPayment());
+        logStep("The user fills in the down payment field with value: " + testData.getDownPayment());
 
         elementsMethods.clickElement(applyNowButtonElement);
-        LogUtility.infoLog("The user clicks on the Apply Now button");
+        logStep("The user clicks on the Apply Now button");
     }
 
     public String getLoanStatus() {
@@ -43,12 +42,12 @@ public class RequestLoanPage extends BasePage {
             elementsMethods.waitVisibleElement(loanStatusElement);
 
             String loanStatus = elementsMethods.getElementText(loanStatusElement);
-            LogUtility.infoLog("The user sees the loan status: " + loanStatus);
+            logStep("The user sees the loan status: " + loanStatus);
 
             return loanStatus;
 
         } catch (TimeoutException exception) {
-            LogUtility.infoLog("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
+            logStep("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
             return "Denied";
         }
     }

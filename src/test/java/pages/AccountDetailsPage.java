@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class AccountDetailsPage extends BasePage {
 
@@ -17,7 +16,7 @@ public class AccountDetailsPage extends BasePage {
     public String getPageTitle() {
         elementsMethods.waitVisibleElement(pageTitleElement);
         String pageTitle = elementsMethods.getElementText(pageTitleElement);
-        LogUtility.infoLog("The user sees the Account Details page with title: " + pageTitle);
+        logStep("The user sees the Account Details page with title: " + pageTitle);
         return pageTitle;
     }
 }

@@ -4,7 +4,6 @@ import modelObject.OpenAccountModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class OpenAccountPage extends BasePage {
 
@@ -31,14 +30,14 @@ public class OpenAccountPage extends BasePage {
         elementsMethods.waitVisibleElement(accountTypeDropdownElement);
 
         selectMethods.selectByVisibleText(accountTypeDropdownElement, testData.getAccountType());
-        LogUtility.infoLog("The user selects " + testData.getAccountType() + " from the account type dropdown");
+        logStep("The user selects " + testData.getAccountType() + " from the account type dropdown");
 
         elementsMethods.waitVisibleElement(fromAccountOptionElement);
         String fromAccountOptionValue = elementsMethods.getElementText(fromAccountOptionElement);
-        LogUtility.infoLog("The user sees the From Account dropdown loaded with value: " + fromAccountOptionValue);
+        logStep("The user sees the From Account dropdown loaded with value: " + fromAccountOptionValue);
 
         elementsMethods.clickElement(openNewAccountButtonElement);
-        LogUtility.infoLog("The user clicks on the Open New Account button");
+        logStep("The user clicks on the Open New Account button");
     }
 
     public String getFromAccountOptionText() {
@@ -49,7 +48,7 @@ public class OpenAccountPage extends BasePage {
     public String getNewAccountId() {
         elementsMethods.waitVisibleElement(openAccountResultElement);
         String newAccountId = elementsMethods.getElementText(newAccountIdElement);
-        LogUtility.infoLog("The user sees the new account ID: " + newAccountId);
+        logStep("The user sees the new account ID: " + newAccountId);
         return newAccountId;
     }
 }

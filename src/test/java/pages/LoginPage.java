@@ -4,7 +4,6 @@ import modelObject.LoginModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class LoginPage extends BasePage {
 
@@ -29,32 +28,32 @@ public class LoginPage extends BasePage {
 
     public void loginInvalidProcess(LoginModel testData) {
         elementsMethods.fillElement(usernameElement, testData.getInvalidUsername());
-        LogUtility.infoLog("The user fills in the username field with value: " + testData.getInvalidUsername());
+        logStep("The user fills in the username field with value: " + testData.getInvalidUsername());
 
         elementsMethods.fillElement(passwordElement, testData.getInvalidPassword());
-        LogUtility.infoLog("The user fills in the password field");
+        logStep("The user fills in the password field");
 
         elementsMethods.clickJS(loginButtonElement);
-        LogUtility.infoLog("The user clicks on the Log In button");
+        logStep("The user clicks on the Log In button");
     }
 
     public void loginValidProcess(String username, String password) {
         elementsMethods.waitVisibleElement(usernameElement);
 
         elementsMethods.fillElement(usernameElement, username);
-        LogUtility.infoLog("The user fills in the username field with value: " + username);
+        logStep("The user fills in the username field with value: " + username);
 
         elementsMethods.fillElement(passwordElement, password);
-        LogUtility.infoLog("The user fills in the password field");
+        logStep("The user fills in the password field");
 
         elementsMethods.clickElement(loginButtonElement);
-        LogUtility.infoLog("The user clicks on the Log In button");
+        logStep("The user clicks on the Log In button");
     }
 
     public void clickLogOut() {
         elementsMethods.waitVisibleElement(logOutElement);
         elementsMethods.clickElement(logOutElement);
-        LogUtility.infoLog("The user clicks on the Log Out link");
+        logStep("The user clicks on the Log Out link");
     }
 
     public String getErrorTitle() {

@@ -4,7 +4,6 @@ import modelObject.BillPayModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.LogUtility;
 
 public class BillPayPage extends BasePage {
 
@@ -50,43 +49,43 @@ public class BillPayPage extends BasePage {
 
     public void billPayProcess(BillPayModel testData) {
         elementsMethods.fillElement(payeeNameElement, testData.getPayeeName());
-        LogUtility.infoLog("The user fills in the payee name field with value: " + testData.getPayeeName());
+        logStep("The user fills in the payee name field with value: " + testData.getPayeeName());
 
         elementsMethods.fillElement(payeeStreetElement, testData.getAddress());
-        LogUtility.infoLog("The user fills in the payee street field with value: " + testData.getAddress());
+        logStep("The user fills in the payee street field with value: " + testData.getAddress());
 
         elementsMethods.fillElement(payeeCityElement, testData.getCity());
-        LogUtility.infoLog("The user fills in the payee city field with value: " + testData.getCity());
+        logStep("The user fills in the payee city field with value: " + testData.getCity());
 
         elementsMethods.fillElement(payeeStateElement, testData.getState());
-        LogUtility.infoLog("The user fills in the payee state field with value: " + testData.getState());
+        logStep("The user fills in the payee state field with value: " + testData.getState());
 
         elementsMethods.fillElement(payeeZipElement, testData.getZipCode());
-        LogUtility.infoLog("The user fills in the payee zip code field with value: " + testData.getZipCode());
+        logStep("The user fills in the payee zip code field with value: " + testData.getZipCode());
 
         elementsMethods.fillElement(payeePhoneElement, testData.getPhone());
-        LogUtility.infoLog("The user fills in the payee phone number field with value: " + testData.getPhone());
+        logStep("The user fills in the payee phone number field with value: " + testData.getPhone());
 
         elementsMethods.fillElement(accountNumberElement, testData.getAccountNumber());
-        LogUtility.infoLog("The user fills in the account number field");
+        logStep("The user fills in the account number field");
 
         elementsMethods.fillElement(verifyAccountElement, testData.getVerifyAccount());
-        LogUtility.infoLog("The user fills in the verify account field");
+        logStep("The user fills in the verify account field");
 
         elementsMethods.fillElement(amountElement, testData.getAmount());
-        LogUtility.infoLog("The user fills in the amount field with value: " + testData.getAmount());
+        logStep("The user fills in the amount field with value: " + testData.getAmount());
 
         selectMethods.selectByIndex(fromAccountDropdownElement, 0);
-        LogUtility.infoLog("The user selects the first available account from the source account dropdown");
+        logStep("The user selects the first available account from the source account dropdown");
 
         elementsMethods.clickElement(sendPaymentButtonElement);
-        LogUtility.infoLog("The user clicks on the Send Payment button");
+        logStep("The user clicks on the Send Payment button");
     }
 
     public String getBillPayResult() {
         elementsMethods.waitVisibleElement(billPayResultElement);
         String billPayResult = elementsMethods.getElementText(billPayResultElement);
-        LogUtility.infoLog("The user sees the bill pay result: " + billPayResult);
+        logStep("The user sees the bill pay result: " + billPayResult);
         return billPayResult;
     }
 }
