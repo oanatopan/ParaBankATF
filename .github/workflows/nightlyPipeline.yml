@@ -10,21 +10,32 @@ name: Nightly pipeline
 
 on:
   schedule:
-  - cron: '0 21 * * 1-5'
+    - cron: '0 21 * * 1-5'
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Run Automation test
-      run: mvn clean install
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: ParaBankATF
+        ports:
+          - 3306:3306
 
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run Automation test
+        run: mvn clean install
 
