@@ -12,24 +12,52 @@ on:
   workflow_dispatch:
     inputs:
       suitename:
-        description: "Please specify the suite name (@SmokeSuite, @RegressionSuite )"
+        description: "Please specify the suite name (smokeSuite.xml, regressionSuite.xml, testng.xml)"
         required: true
-        default: "@SmokeSuite"
+        default: "smokeSuite.xml"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Run Automation test
-      run: mvn clean install -Dgroups=${{ github.event.inputs.suitename }}
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ParaBankATF
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
 
-   
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot && break
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+
+      - name: Initialize MySQL database
+        run: mysql -h 127.0.0.1 -P 3306 -u root -proot ParaBankATF < src/test/resources/database/init.sql
+
+      - name: Run Automation tests
+        run: mvn clean test -DsuiteXmlFile=${{ github.event.inputs.suitename }}
+        env:
+          DB_URL: jdbc:mysql://127.0.0.1:3306/ParaBankATF
+          DB_USER: root
+          DB_PASSWORD: root
