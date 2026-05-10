@@ -16,6 +16,8 @@ public class RegisterTest extends SharedData {
     @Test(groups = {SuiteType.SMOKE_SUITE, SuiteType.REGRESSION_SUITE})
     public void metodaTest() {
 
+        getDriver().get("https://parabank.parasoft.com/parabank/register.htm");
+
         DataBaseQueries db = new DataBaseQueries();
         RegisterModel testData = db.getRegisterData();
         RegisterPage registerPage = new RegisterPage(getDriver());
@@ -27,4 +29,3 @@ public class RegisterTest extends SharedData {
         Assert.assertTrue(actualSuccessMessage.contains("Your account was created successfully. You are now logged in."), "Register success message is not correct.");
     }
 }
-

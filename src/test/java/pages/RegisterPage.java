@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogUtility;
 
 import java.util.List;
@@ -56,6 +55,8 @@ public class RegisterPage extends BasePage {
     private WebElement successMessageElement;
 
     public void registerProcess(String usernameValue, RegisterModel testData) {
+        elementsMethods.waitVisibleElement(firstNameElement);
+
         elementsMethods.fillElement(firstNameElement, testData.getFirstName());
         LogUtility.infoLog("The user fills in the first name field with value: " + testData.getFirstName());
 
