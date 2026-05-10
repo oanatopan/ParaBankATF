@@ -12,15 +12,15 @@ public class RequestLoanModel {
     private String approvedStatus;
     private String deniedStatus;
 
-    public RequestLoanModel() {}
+    public RequestLoanModel() {
+    }
 
     public RequestLoanModel(String filePath) {
         loadFromJson(filePath);
     }
 
     private void loadFromJson(String filePath) {
-        try (InputStream inputStream =
-                     getClass().getClassLoader().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in resources: " + filePath);
             }
@@ -30,15 +30,35 @@ public class RequestLoanModel {
         }
     }
 
-    public String getLoanAmount() { return loanAmount; }
-    public void setLoanAmount(String loanAmount) { this.loanAmount = loanAmount; }
+    public String getLoanAmount() {
+        return loanAmount;
+    }
 
-    public String getDownPayment() { return downPayment; }
-    public void setDownPayment(String downPayment) { this.downPayment = downPayment; }
+    public void setLoanAmount(String loanAmount) {
+        this.loanAmount = loanAmount;
+    }
 
-    public String getApprovedStatus() { return approvedStatus; }
-    public void setApprovedStatus(String approvedStatus) { this.approvedStatus = approvedStatus; }
+    public String getDownPayment() {
+        return downPayment;
+    }
 
-    public String getDeniedStatus() { return deniedStatus; }
-    public void setDeniedStatus(String deniedStatus) { this.deniedStatus = deniedStatus; }
+    public void setDownPayment(String downPayment) {
+        this.downPayment = downPayment;
+    }
+
+    public String getApprovedStatus() {
+        return approvedStatus;
+    }
+
+    public void setApprovedStatus(String approvedStatus) {
+        this.approvedStatus = approvedStatus;
+    }
+
+    public String getDeniedStatus() {
+        return deniedStatus;
+    }
+
+    public void setDeniedStatus(String deniedStatus) {
+        this.deniedStatus = deniedStatus;
+    }
 }

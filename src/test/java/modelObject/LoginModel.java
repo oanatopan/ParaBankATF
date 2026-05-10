@@ -15,8 +15,7 @@ public class LoginModel {
     }
 
     private void loadFromJson(String filePath) {
-        try (InputStream inputStream =
-                     getClass().getClassLoader().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in resources: " + filePath);
             }
@@ -26,9 +25,19 @@ public class LoginModel {
         }
     }
 
-    public String getInvalidUsername() { return invalidUsername; }
-    public void setInvalidUsername(String invalidUsername) { this.invalidUsername = invalidUsername; }
+    public String getInvalidUsername() {
+        return invalidUsername;
+    }
 
-    public String getInvalidPassword() { return invalidPassword; }
-    public void setInvalidPassword(String invalidPassword) { this.invalidPassword = invalidPassword; }
+    public void setInvalidUsername(String invalidUsername) {
+        this.invalidUsername = invalidUsername;
+    }
+
+    public String getInvalidPassword() {
+        return invalidPassword;
+    }
+
+    public void setInvalidPassword(String invalidPassword) {
+        this.invalidPassword = invalidPassword;
+    }
 }

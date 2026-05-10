@@ -15,8 +15,7 @@ public class TransferFundsModel {
     }
 
     private void loadFromJson(String filePath) {
-        try (InputStream inputStream =
-                     getClass().getClassLoader().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in resources: " + filePath);
             }
@@ -26,9 +25,19 @@ public class TransferFundsModel {
         }
     }
 
-    public String getAmount() { return amount; }
-    public void setAmount(String amount) { this.amount = amount; }
+    public String getAmount() {
+        return amount;
+    }
 
-    public String getSuccessMessage() { return successMessage; }
-    public void setSuccessMessage(String successMessage) { this.successMessage = successMessage; }
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getSuccessMessage() {
+        return successMessage;
+    }
+
+    public void setSuccessMessage(String successMessage) {
+        this.successMessage = successMessage;
+    }
 }

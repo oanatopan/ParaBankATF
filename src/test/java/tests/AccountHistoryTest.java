@@ -24,7 +24,8 @@ public class AccountHistoryTest extends SharedData {
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(getDriver());
         AccountDetailsPage accountDetailsPage = new AccountDetailsPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();        registerPage.registerProcess(usernameValue, testData);
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
+        registerPage.registerProcess(usernameValue, testData);
 
         String successMessageText = registerPage.getSuccessMessage();
         Assert.assertFalse(successMessageText.isEmpty(), "Registration success message was not displayed.");

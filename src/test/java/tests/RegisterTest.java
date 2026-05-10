@@ -24,8 +24,7 @@ public class RegisterTest extends SharedData {
         registerPage.registerProcess(usernameValue, testData);
 
         String actualSuccessMessage = registerPage.getSuccessMessage();
-        Assert.assertTrue(actualSuccessMessage.contains("Your account was created successfully. You are now logged in."),
-                "Register success message is not correct.");
+        Assert.assertTrue(actualSuccessMessage.contains("Your account was created successfully. You are now logged in."), "Register success message is not correct.");
     }
 }
 

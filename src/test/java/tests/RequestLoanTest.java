@@ -34,9 +34,6 @@ public class RequestLoanTest extends SharedData {
         requestLoanPage.loanProcess(loanData);
 
         String actualLoanStatus = requestLoanPage.getLoanStatus();
-        Assert.assertTrue(
-                actualLoanStatus.equals(loanData.getApprovedStatus()) ||
-                        actualLoanStatus.equals(loanData.getDeniedStatus()),
-                "Loan status is not Approved or Denied. Actual status: " + actualLoanStatus);
+        Assert.assertTrue(actualLoanStatus.equals(loanData.getApprovedStatus()) || actualLoanStatus.equals(loanData.getDeniedStatus()), "Loan status is not Approved or Denied. Actual status: " + actualLoanStatus);
     }
 }

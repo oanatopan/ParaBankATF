@@ -16,8 +16,7 @@ public class FindTransactionsModel {
     }
 
     private void loadFromJson(String filePath) {
-        try (InputStream inputStream =
-                     getClass().getClassLoader().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in resources: " + filePath);
             }
@@ -27,12 +26,27 @@ public class FindTransactionsModel {
         }
     }
 
-    public String getActivityPeriod() { return activityPeriod; }
-    public void setActivityPeriod(String activityPeriod) { this.activityPeriod = activityPeriod; }
+    public String getActivityPeriod() {
+        return activityPeriod;
+    }
 
-    public String getTransactionType() { return transactionType; }
-    public void setTransactionType(String transactionType) { this.transactionType = transactionType; }
+    public void setActivityPeriod(String activityPeriod) {
+        this.activityPeriod = activityPeriod;
+    }
 
-    public String getExpectedTitle() { return expectedTitle; }
-    public void setExpectedTitle(String expectedTitle) { this.expectedTitle = expectedTitle; }
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getExpectedTitle() {
+        return expectedTitle;
+    }
+
+    public void setExpectedTitle(String expectedTitle) {
+        this.expectedTitle = expectedTitle;
+    }
 }

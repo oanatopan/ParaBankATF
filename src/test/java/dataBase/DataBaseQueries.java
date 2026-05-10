@@ -33,8 +33,7 @@ public class DataBaseQueries {
                 registerModel.setPhone(resultSet.getString("phone"));
                 registerModel.setSsn(resultSet.getString("ssn"));
                 registerModel.setPassword(resultSet.getString("password"));
-                LogUtility.infoLog("The register data has been loaded from the database: "
-                        + registerModel.getFirstName() + " " + registerModel.getLastName());
+                LogUtility.infoLog("The register data has been loaded from the database: " + registerModel.getFirstName() + " " + registerModel.getLastName());
                 System.out.println("=== Register Data from DB ===");
                 System.out.println("First Name: " + registerModel.getFirstName());
                 System.out.println("Last Name: " + registerModel.getLastName());
@@ -53,16 +52,7 @@ public class DataBaseQueries {
 
     @Attachment(value = "Register Data from DB", type = "text/html")
     public String attachRegisterData(RegisterModel model) {
-        return "<table border='1' cellpadding='5' cellspacing='0'>" +
-                "<tr><th>Field</th><th>Value</th></tr>" +
-                "<tr><td>First Name</td><td>" + model.getFirstName() + "</td></tr>" +
-                "<tr><td>Last Name</td><td>" + model.getLastName() + "</td></tr>" +
-                "<tr><td>Address</td><td>" + model.getAddress() + "</td></tr>" +
-                "<tr><td>City</td><td>" + model.getCity() + "</td></tr>" +
-                "<tr><td>State</td><td>" + model.getState() + "</td></tr>" +
-                "<tr><td>Zip Code</td><td>" + model.getZipCode() + "</td></tr>" +
-                "<tr><td>Phone</td><td>" + model.getPhone() + "</td></tr>" +
-                "</table>";
+        return "<table border='1' cellpadding='5' cellspacing='0'>" + "<tr><th>Field</th><th>Value</th></tr>" + "<tr><td>First Name</td><td>" + model.getFirstName() + "</td></tr>" + "<tr><td>Last Name</td><td>" + model.getLastName() + "</td></tr>" + "<tr><td>Address</td><td>" + model.getAddress() + "</td></tr>" + "<tr><td>City</td><td>" + model.getCity() + "</td></tr>" + "<tr><td>State</td><td>" + model.getState() + "</td></tr>" + "<tr><td>Zip Code</td><td>" + model.getZipCode() + "</td></tr>" + "<tr><td>Phone</td><td>" + model.getPhone() + "</td></tr>" + "</table>";
     }
 
     public BillPayModel getBillPayData() {
@@ -80,8 +70,7 @@ public class DataBaseQueries {
                 billPayModel.setAccountNumber(resultSet.getString("account_number"));
                 billPayModel.setVerifyAccount(resultSet.getString("verify_account"));
                 billPayModel.setAmount(resultSet.getString("amount"));
-                LogUtility.infoLog("The bill pay data has been loaded from the database: "
-                        + billPayModel.getPayeeName());
+                LogUtility.infoLog("The bill pay data has been loaded from the database: " + billPayModel.getPayeeName());
                 System.out.println("=== Bill Pay Data from DB ===");
                 System.out.println("Payee Name: " + billPayModel.getPayeeName());
                 System.out.println("Address: " + billPayModel.getAddress());
@@ -100,16 +89,7 @@ public class DataBaseQueries {
 
     @Attachment(value = "Bill Pay Data from DB", type = "text/html")
     public String attachBillPayData(BillPayModel model) {
-        return "<table border='1' cellpadding='5' cellspacing='0'>" +
-                "<tr><th>Field</th><th>Value</th></tr>" +
-                "<tr><td>Payee Name</td><td>" + model.getPayeeName() + "</td></tr>" +
-                "<tr><td>Address</td><td>" + model.getAddress() + "</td></tr>" +
-                "<tr><td>City</td><td>" + model.getCity() + "</td></tr>" +
-                "<tr><td>State</td><td>" + model.getState() + "</td></tr>" +
-                "<tr><td>Zip Code</td><td>" + model.getZipCode() + "</td></tr>" +
-                "<tr><td>Phone</td><td>" + model.getPhone() + "</td></tr>" +
-                "<tr><td>Amount</td><td>" + model.getAmount() + "</td></tr>" +
-                "</table>";
+        return "<table border='1' cellpadding='5' cellspacing='0'>" + "<tr><th>Field</th><th>Value</th></tr>" + "<tr><td>Payee Name</td><td>" + model.getPayeeName() + "</td></tr>" + "<tr><td>Address</td><td>" + model.getAddress() + "</td></tr>" + "<tr><td>City</td><td>" + model.getCity() + "</td></tr>" + "<tr><td>State</td><td>" + model.getState() + "</td></tr>" + "<tr><td>Zip Code</td><td>" + model.getZipCode() + "</td></tr>" + "<tr><td>Phone</td><td>" + model.getPhone() + "</td></tr>" + "<tr><td>Amount</td><td>" + model.getAmount() + "</td></tr>" + "</table>";
     }
 
     public RequestLoanModel getLoanData() {
@@ -122,8 +102,7 @@ public class DataBaseQueries {
                 loanModel.setDownPayment(resultSet.getString("down_payment"));
                 loanModel.setApprovedStatus(resultSet.getString("approved_status"));
                 loanModel.setDeniedStatus(resultSet.getString("denied_status"));
-                LogUtility.infoLog("The loan data has been loaded from the database: amount="
-                        + loanModel.getLoanAmount() + ", down payment=" + loanModel.getDownPayment());
+                LogUtility.infoLog("The loan data has been loaded from the database: amount=" + loanModel.getLoanAmount() + ", down payment=" + loanModel.getDownPayment());
                 System.out.println("=== Loan Data from DB ===");
                 System.out.println("Loan Amount: " + loanModel.getLoanAmount());
                 System.out.println("Down Payment: " + loanModel.getDownPayment());
@@ -139,12 +118,6 @@ public class DataBaseQueries {
 
     @Attachment(value = "Loan Data from DB", type = "text/html")
     public String attachLoanData(RequestLoanModel model) {
-        return "<table border='1' cellpadding='5' cellspacing='0'>" +
-                "<tr><th>Field</th><th>Value</th></tr>" +
-                "<tr><td>Loan Amount</td><td>" + model.getLoanAmount() + "</td></tr>" +
-                "<tr><td>Down Payment</td><td>" + model.getDownPayment() + "</td></tr>" +
-                "<tr><td>Approved Status</td><td>" + model.getApprovedStatus() + "</td></tr>" +
-                "<tr><td>Denied Status</td><td>" + model.getDeniedStatus() + "</td></tr>" +
-                "</table>";
+        return "<table border='1' cellpadding='5' cellspacing='0'>" + "<tr><th>Field</th><th>Value</th></tr>" + "<tr><td>Loan Amount</td><td>" + model.getLoanAmount() + "</td></tr>" + "<tr><td>Down Payment</td><td>" + model.getDownPayment() + "</td></tr>" + "<tr><td>Approved Status</td><td>" + model.getApprovedStatus() + "</td></tr>" + "<tr><td>Denied Status</td><td>" + model.getDeniedStatus() + "</td></tr>" + "</table>";
     }
 }

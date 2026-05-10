@@ -45,7 +45,6 @@ public class TransferFundsTest extends SharedData {
         transferFundsPage.transferProcess(transferData);
 
         String actualResult = transferFundsPage.getTransferResult();
-        Assert.assertTrue(actualResult.contains(transferData.getSuccessMessage()),
-                "The transfer confirmation message did not appear.");
+        Assert.assertTrue(actualResult.contains(transferData.getSuccessMessage()), "The transfer confirmation message did not appear.");
     }
 }

@@ -17,15 +17,15 @@ public class BillPayModel {
     private String verifyAccount;
     private String amount;
 
-    public BillPayModel() {}
+    public BillPayModel() {
+    }
 
     public BillPayModel(String filePath) {
         loadFromJson(filePath);
     }
 
     private void loadFromJson(String filePath) {
-        try (InputStream inputStream =
-                     getClass().getClassLoader().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in resources: " + filePath);
             }
@@ -35,30 +35,75 @@ public class BillPayModel {
         }
     }
 
-    public String getPayeeName() { return payeeName; }
-    public void setPayeeName(String payeeName) { this.payeeName = payeeName; }
+    public String getPayeeName() {
+        return payeeName;
+    }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public void setPayeeName(String payeeName) {
+        this.payeeName = payeeName;
+    }
 
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getState() { return state; }
-    public void setState(String state) { this.state = state; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public String getZipCode() { return zipCode; }
-    public void setZipCode(String zipCode) { this.zipCode = zipCode; }
+    public String getCity() {
+        return city;
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public String getAccountNumber() { return accountNumber; }
-    public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
+    public String getState() {
+        return state;
+    }
 
-    public String getVerifyAccount() { return verifyAccount; }
-    public void setVerifyAccount(String verifyAccount) { this.verifyAccount = verifyAccount; }
+    public void setState(String state) {
+        this.state = state;
+    }
 
-    public String getAmount() { return amount; }
-    public void setAmount(String amount) { this.amount = amount; }
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getVerifyAccount() {
+        return verifyAccount;
+    }
+
+    public void setVerifyAccount(String verifyAccount) {
+        this.verifyAccount = verifyAccount;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 }

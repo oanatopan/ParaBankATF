@@ -33,7 +33,6 @@ public class BillPayTest extends SharedData {
         billPayPage.billPayProcess(billPayData);
 
         String actualBillPayResult = billPayPage.getBillPayResult();
-        Assert.assertTrue(actualBillPayResult.toLowerCase().contains("bill payment complete"),
-                "The payment was not completed.");
+        Assert.assertTrue(actualBillPayResult.toLowerCase().contains("bill payment complete"), "The payment was not completed.");
     }
 }

@@ -22,7 +22,8 @@ public class AccountsOverviewTest extends SharedData {
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(getDriver());
 
-        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();        registerPage.registerProcess(usernameValue, testData);
+        String usernameValue = "oana" + System.currentTimeMillis() + Thread.currentThread().getId();
+        registerPage.registerProcess(usernameValue, testData);
 
         String registrationError = registerPage.getRegistrationError();
         if (!registrationError.isEmpty()) {

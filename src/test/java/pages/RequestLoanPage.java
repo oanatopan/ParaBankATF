@@ -26,9 +26,6 @@ public class RequestLoanPage extends BasePage {
     private WebElement loanStatusElement;
 
     public void loanProcess(RequestLoanModel testData) {
-
-        LogUtility.infoLog("Current URL before loan process: " + driver.getCurrentUrl());
-
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(amountElement));
 
         elementsMethods.fillElement(amountElement, testData.getLoanAmount());
@@ -52,7 +49,6 @@ public class RequestLoanPage extends BasePage {
 
         } catch (Exception exception) {
             LogUtility.infoLog("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
-
             return "Denied";
         }
     }

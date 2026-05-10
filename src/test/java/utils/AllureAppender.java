@@ -26,10 +26,7 @@ public class AllureAppender extends AbstractAppender {
     }
 
     @PluginFactory
-    public static AllureAppender createAppender(
-            @PluginAttribute("name") String name,
-            @PluginElement("Layout") Layout<? extends Serializable> layout,
-            @PluginElement("Filter") final Filter filter) {
+    public static AllureAppender createAppender(@PluginAttribute("name") String name, @PluginElement("Layout") Layout<? extends Serializable> layout, @PluginElement("Filter") final Filter filter) {
         if (layout == null) {
             layout = PatternLayout.createDefaultLayout();
         }
@@ -54,12 +51,7 @@ public class AllureAppender extends AbstractAppender {
         try {
             if (driver instanceof TakesScreenshot) {
                 String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-                Allure.addAttachment(
-                        "Screenshot on failure",
-                        "image/png",
-                        new ByteArrayInputStream(Base64.getDecoder().decode(base64Screenshot)),
-                        ".png"
-                );
+                Allure.addAttachment("Screenshot on failure", "image/png", new ByteArrayInputStream(Base64.getDecoder().decode(base64Screenshot)), ".png");
             }
         } catch (Exception e) {
             Allure.step("Screenshot capture failed: " + e.getMessage());
