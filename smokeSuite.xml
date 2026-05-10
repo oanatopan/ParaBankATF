@@ -8,15 +8,14 @@
     </listeners>
 
     <test name="Smoke Tests">
-        <groups>
-            <run>
-                <include name="SmokeSuite"/>
-            </run>
-        </groups>
-
-        <packages>
-            <package name="tests"/>
-        </packages>
+        <classes>
+            <class name="tests.RegisterTest"/>
+            <class name="tests.LoginValidTest"/>
+            <class name="tests.LoginInvalidTest"/>
+            <class name="tests.BillPayTest"/>
+            <class name="tests.OpenAccountTest"/>
+            <class name="tests.LogOutTest"/>
+        </classes>
     </test>
 
 </suite>
