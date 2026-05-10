@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
 
-    public WebDriver driver;
-    public ElementsMethods elementsMethods;
-    public SelectMethods selectMethods;
+    protected WebDriver driver;
+    protected ElementsMethods elementsMethods;
+    protected SelectMethods selectMethods;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

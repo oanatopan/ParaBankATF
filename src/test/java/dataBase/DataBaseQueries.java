@@ -33,12 +33,20 @@ public class DataBaseQueries {
                 registerModel.setPhone(resultSet.getString("phone"));
                 registerModel.setSsn(resultSet.getString("ssn"));
                 registerModel.setPassword(resultSet.getString("password"));
-                LogUtility.infoLog("The user register data loaded from database: "
+                LogUtility.infoLog("The register data has been loaded from the database: "
                         + registerModel.getFirstName() + " " + registerModel.getLastName());
+                System.out.println("=== Register Data from DB ===");
+                System.out.println("First Name: " + registerModel.getFirstName());
+                System.out.println("Last Name: " + registerModel.getLastName());
+                System.out.println("Address: " + registerModel.getAddress());
+                System.out.println("City: " + registerModel.getCity());
+                System.out.println("State: " + registerModel.getState());
+                System.out.println("Zip Code: " + registerModel.getZipCode());
+                System.out.println("Phone: " + registerModel.getPhone());
                 attachRegisterData(registerModel);
             }
         } catch (SQLException e) {
-            LogUtility.errorLog("Database error on getRegisterData: " + e.getMessage());
+            LogUtility.errorLog("The database error occurred on getRegisterData: " + e.getMessage());
         }
         return registerModel;
     }
@@ -72,12 +80,20 @@ public class DataBaseQueries {
                 billPayModel.setAccountNumber(resultSet.getString("account_number"));
                 billPayModel.setVerifyAccount(resultSet.getString("verify_account"));
                 billPayModel.setAmount(resultSet.getString("amount"));
-                LogUtility.infoLog("The bill pay data loaded from database: "
+                LogUtility.infoLog("The bill pay data has been loaded from the database: "
                         + billPayModel.getPayeeName());
+                System.out.println("=== Bill Pay Data from DB ===");
+                System.out.println("Payee Name: " + billPayModel.getPayeeName());
+                System.out.println("Address: " + billPayModel.getAddress());
+                System.out.println("City: " + billPayModel.getCity());
+                System.out.println("State: " + billPayModel.getState());
+                System.out.println("Zip Code: " + billPayModel.getZipCode());
+                System.out.println("Phone: " + billPayModel.getPhone());
+                System.out.println("Amount: " + billPayModel.getAmount());
                 attachBillPayData(billPayModel);
             }
         } catch (SQLException e) {
-            LogUtility.errorLog("Database error on getBillPayData: " + e.getMessage());
+            LogUtility.errorLog("The database error occurred on getBillPayData: " + e.getMessage());
         }
         return billPayModel;
     }
@@ -106,12 +122,17 @@ public class DataBaseQueries {
                 loanModel.setDownPayment(resultSet.getString("down_payment"));
                 loanModel.setApprovedStatus(resultSet.getString("approved_status"));
                 loanModel.setDeniedStatus(resultSet.getString("denied_status"));
-                LogUtility.infoLog("The loan data loaded from database: amount="
-                        + loanModel.getLoanAmount() + " downPayment=" + loanModel.getDownPayment());
+                LogUtility.infoLog("The loan data has been loaded from the database: amount="
+                        + loanModel.getLoanAmount() + ", down payment=" + loanModel.getDownPayment());
+                System.out.println("=== Loan Data from DB ===");
+                System.out.println("Loan Amount: " + loanModel.getLoanAmount());
+                System.out.println("Down Payment: " + loanModel.getDownPayment());
+                System.out.println("Approved Status: " + loanModel.getApprovedStatus());
+                System.out.println("Denied Status: " + loanModel.getDeniedStatus());
                 attachLoanData(loanModel);
             }
         } catch (SQLException e) {
-            LogUtility.errorLog("Database error on getLoanData: " + e.getMessage());
+            LogUtility.errorLog("The database error occurred on getLoanData: " + e.getMessage());
         }
         return loanModel;
     }

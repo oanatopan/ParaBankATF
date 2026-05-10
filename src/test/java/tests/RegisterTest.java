@@ -28,3 +28,4 @@ public class RegisterTest extends SharedData {
                 "Register success message is not correct.");
     }
 }
+

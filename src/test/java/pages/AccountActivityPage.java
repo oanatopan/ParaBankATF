@@ -14,36 +14,38 @@ public class AccountActivityPage extends BasePage {
     }
 
     @FindBy(id = "month")
-    public WebElement monthSelectElement;
+    private WebElement monthSelectElement;
 
     @FindBy(id = "transactionType")
-    public WebElement typeSelectElement;
+    private WebElement typeSelectElement;
 
     @FindBy(xpath = "//input[@value='Go']")
-    public WebElement goButtonElement;
+    private WebElement goButtonElement;
 
     @FindBy(xpath = "//h1[text()='Account Activity']")
-    public WebElement activityTitleElement;
+    private WebElement activityTitleElement;
 
     @FindBy(id = "rightPanel")
-    public WebElement rightPanelElement;
+    private WebElement rightPanelElement;
 
     public void filterProcess(FindTransactionsModel testData) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(monthSelectElement));
 
         selectMethods.selectByVisibleText(monthSelectElement, testData.getActivityPeriod());
-        LogUtility.infoLog("The user selects " + testData.getActivityPeriod() + " from activity period dropdown");
+        LogUtility.infoLog("The user selects " + testData.getActivityPeriod() + " from the activity period dropdown");
 
         selectMethods.selectByVisibleText(typeSelectElement, testData.getTransactionType());
-        LogUtility.infoLog("The user selects " + testData.getTransactionType() + " from transaction type dropdown");
+        LogUtility.infoLog("The user selects " + testData.getTransactionType() + " from the transaction type dropdown");
 
         elementsMethods.clickElement(goButtonElement);
-        LogUtility.infoLog("The user clicks on Go button");
+        LogUtility.infoLog("The user clicks on the Go button");
     }
 
     public String getActivityTitle() {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(activityTitleElement));
-        return elementsMethods.getElementText(activityTitleElement);
+        String activityTitle = elementsMethods.getElementText(activityTitleElement);
+        LogUtility.infoLog("The user sees the Account Activity page with title: " + activityTitle);
+        return activityTitle;
     }
 
     public boolean isRightPanelDisplayed() {

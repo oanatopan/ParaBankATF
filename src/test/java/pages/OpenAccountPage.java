@@ -14,32 +14,32 @@ public class OpenAccountPage extends BasePage {
     }
 
     @FindBy(id = "type")
-    public WebElement accountTypeDropdownElement;
+    private WebElement accountTypeDropdownElement;
 
     @FindBy(xpath = "//select[@id='fromAccountId']/option")
-    public WebElement fromAccountOptionElement;
+    private WebElement fromAccountOptionElement;
 
     @FindBy(xpath = "//input[@value='Open New Account']")
-    public WebElement openNewAccountButtonElement;
+    private WebElement openNewAccountButtonElement;
 
     @FindBy(id = "openAccountResult")
-    public WebElement openAccountResultElement;
+    private WebElement openAccountResultElement;
 
     @FindBy(id = "newAccountId")
-    public WebElement newAccountIdElement;
+    private WebElement newAccountIdElement;
 
     public void openAccountProcess(OpenAccountModel testData) {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(accountTypeDropdownElement));
 
         selectMethods.selectByVisibleText(accountTypeDropdownElement, testData.getAccountType());
-        LogUtility.infoLog("The user selects " + testData.getAccountType() + " from account type dropdown");
+        LogUtility.infoLog("The user selects " + testData.getAccountType() + " from the account type dropdown");
 
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(fromAccountOptionElement));
         String fromAccountOptionValue = elementsMethods.getElementText(fromAccountOptionElement);
-        LogUtility.infoLog("The user sees From Account dropdown loaded with value: " + fromAccountOptionValue);
+        LogUtility.infoLog("The user sees the From Account dropdown loaded with value: " + fromAccountOptionValue);
 
         elementsMethods.clickElement(openNewAccountButtonElement);
-        LogUtility.infoLog("The user clicks on Open New Account button");
+        LogUtility.infoLog("The user clicks on the Open New Account button");
     }
 
     public String getFromAccountOptionText() {
@@ -49,6 +49,8 @@ public class OpenAccountPage extends BasePage {
 
     public String getNewAccountId() {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(openAccountResultElement));
-        return elementsMethods.getElementText(newAccountIdElement);
+        String newAccountId = elementsMethods.getElementText(newAccountIdElement);
+        LogUtility.infoLog("The user sees the new account ID: " + newAccountId);
+        return newAccountId;
     }
 }

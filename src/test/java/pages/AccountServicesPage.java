@@ -13,56 +13,57 @@ public class AccountServicesPage extends BasePage {
     }
 
     @FindBy(linkText = "Open New Account")
-    public WebElement openNewAccountLinkElement;
+    private WebElement openNewAccountLinkElement;
 
     @FindBy(linkText = "Accounts Overview")
-    public WebElement accountsOverviewLinkElement;
+    private WebElement accountsOverviewLinkElement;
 
     @FindBy(linkText = "Transfer Funds")
-    public WebElement transferFundsLinkElement;
+    private WebElement transferFundsLinkElement;
 
     @FindBy(linkText = "Bill Pay")
-    public WebElement billPayLinkElement;
+    private WebElement billPayLinkElement;
 
     @FindBy(linkText = "Request Loan")
-    public WebElement requestLoanLinkElement;
+    private WebElement requestLoanLinkElement;
 
     @FindBy(linkText = "Log Out")
-    public WebElement logOutLinkElement;
+    private WebElement logOutLinkElement;
 
     public void clickOpenNewAccount() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(openNewAccountLinkElement));
         elementsMethods.clickElement(openNewAccountLinkElement);
-        LogUtility.infoLog("The user clicks on Open New Account link");
+        LogUtility.infoLog("The user clicks on the Open New Account link");
     }
 
     public void clickAccountsOverview() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(accountsOverviewLinkElement));
         elementsMethods.clickElement(accountsOverviewLinkElement);
-        LogUtility.infoLog("The user clicks on Accounts Overview link");
+        LogUtility.infoLog("The user clicks on the Accounts Overview link");
     }
 
     public void clickTransferFunds() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(transferFundsLinkElement));
         elementsMethods.clickElement(transferFundsLinkElement);
-        LogUtility.infoLog("The user clicks on Transfer Funds link");
+        LogUtility.infoLog("The user clicks on the Transfer Funds link");
     }
 
     public void clickBillPay() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(billPayLinkElement));
         elementsMethods.clickElement(billPayLinkElement);
-        LogUtility.infoLog("The user clicks on Bill Pay link");
+        LogUtility.infoLog("The user clicks on the Bill Pay link");
     }
 
     public void clickRequestLoan() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(requestLoanLinkElement));
         elementsMethods.clickElement(requestLoanLinkElement);
-        LogUtility.infoLog("The user clicks on Request Loan link");
+
+        LogUtility.infoLog("The user clicks on the Request Loan link");
     }
 
     public void clickLogOut() {
         elementsMethods.wait.until(ExpectedConditions.elementToBeClickable(logOutLinkElement));
         elementsMethods.clickElement(logOutLinkElement);
-        LogUtility.infoLog("The user clicks on Log Out link");
+        LogUtility.infoLog("The user clicks on the Log Out link");
     }
 }

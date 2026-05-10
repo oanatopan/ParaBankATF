@@ -39,11 +39,11 @@ public class SharedData {
 
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 
 
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
-        LogUtility.infoLog("The user navigates to: " + driver.getCurrentUrl());
+        LogUtility.infoLog("The user navigates to the following URL: " + driver.getCurrentUrl());
     }
 
     @AfterMethod(alwaysRun = true)
@@ -51,11 +51,9 @@ public class SharedData {
         if (result.getStatus() == ITestResult.FAILURE) {
             saveScreenshot();
         }
-
         if (driver != null) {
             driver.quit();
         }
-
         LogUtility.finishTest(testName);
     }
 

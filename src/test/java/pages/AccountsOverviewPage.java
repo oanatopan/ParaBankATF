@@ -13,10 +13,10 @@ public class AccountsOverviewPage extends BasePage {
     }
 
     @FindBy(id = "accountTable")
-    public WebElement accountTableElement;
+    private WebElement accountTableElement;
 
     @FindBy(xpath = "//table[@id='accountTable']//a")
-    public WebElement firstAccountLinkElement;
+    private WebElement firstAccountLinkElement;
 
     public String getAccountTableText() {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(accountTableElement));

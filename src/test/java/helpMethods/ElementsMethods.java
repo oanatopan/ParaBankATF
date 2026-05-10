@@ -22,25 +22,25 @@ public class ElementsMethods {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public WebElement waitClickableElement(WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void clickElement(WebElement element) {
-        waitVisibleElement(element);
+        waitClickableElement(element);
         element.click();
     }
 
     public void fillElement(WebElement element, String value) {
         waitVisibleElement(element);
+        element.clear();
         element.sendKeys(value);
     }
 
     public void clickJS(WebElement element) {
-        waitVisibleElement(element);
+        waitClickableElement(element);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
-    }
-
-    public WebElement waitClickableElement(WebElement element) {
-        WebElement waitclickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
-        return waitclickableElement;
     }
 
     public String getElementText(WebElement element) {

@@ -22,6 +22,7 @@ public class RequestLoanTest extends SharedData {
         DataBaseQueries db = new DataBaseQueries();
         RegisterModel registerData = db.getRegisterData();
         RequestLoanModel loanData = db.getLoanData();
+
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountServicesPage accountServicesPage = new AccountServicesPage(getDriver());
         RequestLoanPage requestLoanPage = new RequestLoanPage(getDriver());

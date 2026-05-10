@@ -14,37 +14,39 @@ public class TransferFundsPage extends BasePage {
     }
 
     @FindBy(id = "fromAccountId")
-    public WebElement fromAccountDropdownElement;
+    private WebElement fromAccountDropdownElement;
 
     @FindBy(id = "toAccountId")
-    public WebElement toAccountDropdownElement;
+    private WebElement toAccountDropdownElement;
 
     @FindBy(id = "amount")
-    public WebElement amountElement;
+    private WebElement amountElement;
 
     @FindBy(xpath = "//input[@value='Transfer']")
-    public WebElement transferButtonElement;
+    private WebElement transferButtonElement;
 
     @FindBy(id = "showResult")
-    public WebElement resultElement;
+    private WebElement resultElement;
 
     public void transferProcess(TransferFundsModel testData) {
         WebElement fromAccountDropdown = elementsMethods.waitClickableElement(fromAccountDropdownElement);
         selectMethods.selectByIndex(fromAccountDropdown, 0);
-        LogUtility.infoLog("The user selects first available account from From Account dropdown");
+        LogUtility.infoLog("The user selects the first available account from the From Account dropdown");
 
         selectMethods.selectByIndex(toAccountDropdownElement, 1);
-        LogUtility.infoLog("The user selects second available account from To Account dropdown");
+        LogUtility.infoLog("The user selects the second available account from the To Account dropdown");
 
         elementsMethods.fillElement(amountElement, testData.getAmount());
-        LogUtility.infoLog("The user fills amount field with value: " + testData.getAmount());
+        LogUtility.infoLog("The user fills in the amount field with value: " + testData.getAmount());
 
         elementsMethods.clickElement(transferButtonElement);
-        LogUtility.infoLog("The user clicks on Transfer button");
+        LogUtility.infoLog("The user clicks on the Transfer button");
     }
 
     public String getTransferResult() {
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(resultElement));
-        return elementsMethods.getElementText(resultElement);
+        String transferResult = elementsMethods.getElementText(resultElement);
+        LogUtility.infoLog("The user sees the transfer result: " + transferResult);
+        return transferResult;
     }
 }

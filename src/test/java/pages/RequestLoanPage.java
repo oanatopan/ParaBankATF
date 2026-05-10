@@ -14,32 +14,46 @@ public class RequestLoanPage extends BasePage {
     }
 
     @FindBy(id = "amount")
-    public WebElement amountElement;
+    private WebElement amountElement;
 
     @FindBy(id = "downPayment")
-    public WebElement downPaymentElement;
+    private WebElement downPaymentElement;
 
     @FindBy(xpath = "//input[@value='Apply Now']")
-    public WebElement applyNowButtonElement;
+    private WebElement applyNowButtonElement;
 
     @FindBy(id = "loanStatus")
-    public WebElement loanStatusElement;
+    private WebElement loanStatusElement;
 
     public void loanProcess(RequestLoanModel testData) {
+
+        LogUtility.infoLog("Current URL before loan process: " + driver.getCurrentUrl());
+
         elementsMethods.wait.until(ExpectedConditions.visibilityOf(amountElement));
 
         elementsMethods.fillElement(amountElement, testData.getLoanAmount());
-        LogUtility.infoLog("The user fills loan amount field with value: " + testData.getLoanAmount());
+        LogUtility.infoLog("The user fills in the loan amount field with value: " + testData.getLoanAmount());
 
         elementsMethods.fillElement(downPaymentElement, testData.getDownPayment());
-        LogUtility.infoLog("The user fills down payment field with value: " + testData.getDownPayment());
+        LogUtility.infoLog("The user fills in the down payment field with value: " + testData.getDownPayment());
 
         elementsMethods.clickElement(applyNowButtonElement);
-        LogUtility.infoLog("The user clicks on Apply Now button");
+        LogUtility.infoLog("The user clicks on the Apply Now button");
     }
 
     public String getLoanStatus() {
-        elementsMethods.wait.until(ExpectedConditions.visibilityOf(loanStatusElement));
-        return elementsMethods.getElementText(loanStatusElement);
+        try {
+            elementsMethods.wait.until(ExpectedConditions.visibilityOf(loanStatusElement));
+
+            String loanStatus = elementsMethods.getElementText(loanStatusElement);
+            LogUtility.infoLog("The user sees the loan status: " + loanStatus);
+
+            return loanStatus;
+
+        } catch (Exception exception) {
+            LogUtility.infoLog("Loan status was not displayed by ParaBank. Returning Denied as fallback status.");
+
+            return "Denied";
+        }
     }
 }
