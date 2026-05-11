@@ -3,8 +3,10 @@
 <suite name="RegressionSuite" parallel="classes" thread-count="4">
 
     <listeners>
-        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
-        <listener class-name="utils.TestListener"/>
+            <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+            <listener class-name="utils.TestListener"/>
+            <listener class-name="utils.AllureEnvironmentWriter"/>
+        </listeners>
     </listeners>
 
     <test name="Regression Tests">
