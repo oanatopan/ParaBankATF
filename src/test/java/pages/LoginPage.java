@@ -48,6 +48,9 @@ public class LoginPage extends BasePage {
 
         elementsMethods.clickElement(loginButtonElement);
         logStep("The user clicks on the Log In button");
+
+        elementsMethods.waitVisibleElement(logOutElement);
+        logStep("Login successful - menu is visible");
     }
 
     public void clickLogOut() {
